@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="15">
+  <title>Matchup Results</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0d1117; color: #e6edf3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 12px; max-width: 600px; margin: 0 auto;
+    }
+    h2 { text-align: center; margin-bottom: 12px; font-size: 18px; color: #58a6ff; }
+    
+    .results-table {
+      width: 100%; border-collapse: collapse; background: #161b22;
+      border-radius: 8px; overflow: hidden; font-size: 14px; margin-bottom: 15px;
+    }
+    .results-table th, .results-table td {
+      padding: 10px 8px; text-align: center; border-bottom: 1px solid #30363d;
+    }
+    .results-table th { background: #21262d; }
+    .cat-cell { font-weight: 600; text-align: left !important; padding-left: 12px !important; }
+    .margin-cell { font-size: 12px; color: #8b949e; }
+    .winner { color: #3fb950; font-weight: bold; background: rgba(63, 185, 80, 0.15); }
+    .loser { color: #f85149; }
+    
+    .section-title {
+      font-size: 14px; font-weight: 600; color: #8b949e; margin-bottom: 8px; text-align: center;
+    }
+    .img-container {
+      display: flex; flex-direction: row; gap: 8px; margin-top: 10px;
+    }
+    .img-col { flex: 1; background: #161b22; padding: 6px; border-radius: 6px; border: 1px solid #30363d; }
+    .img-col a { display: block; text-decoration: none; }
+    .img-col img { width: 100%; height: auto; border-radius: 4px; display: block; }
+  </style>
+</head>
+<body>
+
+  <h2>🏆 Matchup Comparison</h2>
+
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th style="text-align:left; padding-left:12px;">Category</th>
+        <th>Thomas</th>
+        <th>Dani</th>
+        <th>Margin</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td class="cat-cell">Zip</td>
+          <td class="loser">0:29s</td>
+          <td class="winner">0:10s</td>
+          <td class="margin-cell">Dani won by 19s</td>
+        </tr>
+        
+        <tr>
+          <td class="cat-cell">Lotus</td>
+          <td class="loser">1:19m</td>
+          <td class="winner">0:59s</td>
+          <td class="margin-cell">Dani won by 20s</td>
+        </tr>
+        
+        <tr>
+          <td class="cat-cell">Panda</td>
+          <td class="loser">2:41m</td>
+          <td class="winner">1:06m</td>
+          <td class="margin-cell">Dani won by 95s</td>
+        </tr>
+        
+        <tr>
+          <td class="cat-cell">Libra</td>
+          <td class="loser">1:00m</td>
+          <td class="winner">0:31s</td>
+          <td class="margin-cell">Dani won by 29s</td>
+        </tr>
+        
+        <tr>
+          <td class="cat-cell">Sums</td>
+          <td class="loser">2:09m</td>
+          <td class="winner">1:39m</td>
+          <td class="margin-cell">Dani won by 30s</td>
+        </tr>
+        
+        <tr>
+          <td class="cat-cell">Hashi</td>
+          <td class="loser">0:41s</td>
+          <td class="winner">0:21s</td>
+          <td class="margin-cell">Dani won by 20s</td>
+        </tr>
+        
+    </tbody>
+  </table>
+
+  <div class="section-title">📷 Screenshots (Tap to open full size)</div>
+
+  <div class="img-container">
+    <div class="img-col">
+      <p style="font-size:11px; text-align:center; color:#c9d1d9; margin-bottom:6px;">Thomas</p>
+      <a href="compiled_1785060517162.png" target="_blank">
+        <img src="thumb_compiled_1785060517162.png" alt="Thomas Screenshot">
+      </a>
+    </div>
+    <div class="img-col">
+      <p style="font-size:11px; text-align:center; color:#c9d1d9; margin-bottom:6px;">Dani</p>
+      <a href="compiled_1784898505479.png" target="_blank">
+        <img src="thumb_compiled_1784898505479.png" alt="Dani Screenshot">
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
