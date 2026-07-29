@@ -338,6 +338,119 @@
         }
       ],
       "table_rows": "<tr><td class=\"cat-cell\">Zip</td><td class=\"\">0:30s</td><td class=\"winner\">0:29s</td><td>Dani won by 1s</td></tr>\n<tr><td class=\"cat-cell\">Lotus</td><td class=\"\">1:22min</td><td class=\"winner\">1:19m</td><td>Dani won by 3s</td></tr>\n<tr><td class=\"cat-cell\">Panda</td><td class=\"winner\">2:27min</td><td class=\"\">2:41m</td><td>Thomas won by 14s</td></tr>\n<tr><td class=\"cat-cell\">Libra</td><td class=\"\">1:17min</td><td class=\"winner\">1:00m</td><td>Dani won by 17s</td></tr>\n<tr><td class=\"cat-cell\">Sums</td><td class=\"\">2:21min</td><td class=\"winner\">2:09m</td><td>Dani won by 12s</td></tr>\n<tr><td class=\"cat-cell\">Hashi</td><td class=\"\">0:47s</td><td class=\"winner\">0:41s</td><td>Dani won by 6s</td></tr>"
+    },
+    {
+      "date": "2026-07-27",
+      "created_at": "2026-07-29 17:24:02",
+      "summary": "Thomas 4 - 2 Dani",
+      "daily_page": "2026-07-27.html",
+      "player_a": {
+        "name": "Dani",
+        "screenshot": "..\\screenshots\\compiled_1785104368776.png",
+        "thumbnail": "..\\thumbnails\\thumb_compiled_1785104368776.jpg",
+        "times": [
+          {
+            "raw": "0:12s",
+            "seconds": 12
+          },
+          {
+            "raw": "1:02min",
+            "seconds": 62
+          },
+          {
+            "raw": "0:39s",
+            "seconds": 39
+          },
+          {
+            "raw": "0:31s",
+            "seconds": 31
+          },
+          {
+            "raw": "0:59s",
+            "seconds": 59
+          },
+          {
+            "raw": "0:13s",
+            "seconds": 13
+          }
+        ]
+      },
+      "player_b": {
+        "name": "Thomas",
+        "screenshot": "..\\screenshots\\compiled_1785120453002.png",
+        "thumbnail": "..\\thumbnails\\thumb_compiled_1785120453002.jpg",
+        "times": [
+          {
+            "raw": "0:14s",
+            "seconds": 14
+          },
+          {
+            "raw": "0:46s",
+            "seconds": 46
+          },
+          {
+            "raw": "0:43s",
+            "seconds": 43
+          },
+          {
+            "raw": "0:35s",
+            "seconds": 35
+          },
+          {
+            "raw": "1:09m",
+            "seconds": 69
+          },
+          {
+            "raw": "0:10s",
+            "seconds": 10
+          }
+        ]
+      },
+      "rows": [
+        {
+          "category": "Zip",
+          "my_raw": "0:12s",
+          "sis_raw": "0:14s",
+          "diff": "Thomas won by 2s",
+          "winner": "my"
+        },
+        {
+          "category": "Lotus",
+          "my_raw": "1:02min",
+          "sis_raw": "0:46s",
+          "diff": "Dani won by 16s",
+          "winner": "sis"
+        },
+        {
+          "category": "Panda",
+          "my_raw": "0:39s",
+          "sis_raw": "0:43s",
+          "diff": "Thomas won by 4s",
+          "winner": "my"
+        },
+        {
+          "category": "Libra",
+          "my_raw": "0:31s",
+          "sis_raw": "0:35s",
+          "diff": "Thomas won by 4s",
+          "winner": "my"
+        },
+        {
+          "category": "Sums",
+          "my_raw": "0:59s",
+          "sis_raw": "1:09m",
+          "diff": "Thomas won by 10s",
+          "winner": "my"
+        },
+        {
+          "category": "Hashi",
+          "my_raw": "0:13s",
+          "sis_raw": "0:10s",
+          "diff": "Dani won by 3s",
+          "winner": "sis"
+        }
+      ],
+      "table_rows": "<tr><td class=\"cat-cell\">Zip</td><td class=\"winner\">0:12s</td><td class=\"\">0:14s</td><td>Thomas won by 2s</td></tr>\n<tr><td class=\"cat-cell\">Lotus</td><td class=\"\">1:02min</td><td class=\"winner\">0:46s</td><td>Dani won by 16s</td></tr>\n<tr><td class=\"cat-cell\">Panda</td><td class=\"winner\">0:39s</td><td class=\"\">0:43s</td><td>Thomas won by 4s</td></tr>\n<tr><td class=\"cat-cell\">Libra</td><td class=\"winner\">0:31s</td><td class=\"\">0:35s</td><td>Thomas won by 4s</td></tr>\n<tr><td class=\"cat-cell\">Sums</td><td class=\"winner\">0:59s</td><td class=\"\">1:09m</td><td>Thomas won by 10s</td></tr>\n<tr><td class=\"cat-cell\">Hashi</td><td class=\"\">0:13s</td><td class=\"winner\">0:10s</td><td>Dani won by 3s</td></tr>"
     }
   ]
 }
