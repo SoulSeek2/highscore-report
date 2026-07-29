@@ -1175,8 +1175,7 @@
           if (timestamp < 100000000000) timestamp *= 1000; // convert seconds to ms if needed
 
           const date = new Date(timestamp);
-          const formattedTime = date.toLocaleString([], {
-            dateStyle: 'short',
+          const formattedTime = date.toLocaleString('de-DE', {            
             timeStyle: 'short'
           });
 
