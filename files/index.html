@@ -135,15 +135,15 @@
     <tbody id="tableBody"></tbody>
   </table>
 
-  <div class="section-title">📷 Screenshots (Click to View Full)</div>
+  <div class="section-title">📷 Screenshots</div>
 
   <div class="img-container">
     <div class="img-col">
-      <p>Thomas</p>
+      <p>Thomas <span id="thomasTime" class="img-time"></span></p>
       <img id="thomasImg" src="" alt="Thomas Screenshot" title="Click to view full screenshot">
     </div>
     <div class="img-col">
-      <p>Dani</p>
+      <p>Dani <span id="daniTime" class="img-time"></span></p>
       <img id="daniImg" src="" alt="Dani Screenshot" title="Click to view full screenshot">
     </div>
   </div>
@@ -1156,6 +1156,32 @@
     };
 
     window.addEventListener('DOMContentLoaded', initDatabase);
+    
+    function updateTimeFromImg(imgId, timeSpanId) {
+      const img = document.getElementById(imgId);
+      const span = document.getElementById(timeSpanId);
+
+      if (img && img.src && span) {
+        const match = img.src.match(/(\d{13})/);
+
+        if (match) {
+          const timestamp = parseInt(match[1], 10);
+          const date = new Date(timestamp);
+
+          const formattedTime = date.toLocaleString([], {
+            dateStyle: 'short',
+            timeStyle: 'short'
+          });
+
+          span.textContent = `(${formattedTime})`;
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateTimeFromImg("thomasImg", "thomasTime");
+      updateTimeFromImg("daniImg", "daniTime");
+    });
   </script>
 </body>
 </html>
