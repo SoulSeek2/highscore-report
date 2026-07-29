@@ -25,6 +25,7 @@
       background: #21262d; border: 1px solid #30363d; color: #c9d1d9;
       padding: 6px 12px; border-radius: 6px; font-size: 13px; cursor: pointer;
       display: inline-flex; align-items: center; gap: 4px; transition: all 0.2s;
+      text-decoration: none;
     }
     .btn:hover { background: #30363d; color: #58a6ff; border-color: #58a6ff; }
     .btn-primary { background: #238636; border-color: #2ea043; color: #ffffff; font-weight: 600; }
@@ -118,6 +119,7 @@
       <button id="archiveBtn" class="btn">📅 Archive</button>
       <button id="editBtn" class="btn">✏️ Edit</button>
       <button id="deleteBtn" class="btn btn-danger">🗑️ Delete</button>
+      <a href="Manual.html" class="btn" title="Manual OCR Tool">📸 OCR Tool</a>
     </div>
   </div>
 
@@ -195,7 +197,7 @@
   <div id="toast" class="toast"></div>
 
   <script>
-    const database = {
+    let database = {
   "2026-07-29": {
     "date": "2026-07-29",
     "created_at": "2026-07-29 17:24:07",
@@ -236,8 +238,8 @@
       "thumbnail": "Thumbnails/thumb_compiled_1785308444754.jpg",
       "times": [
         {
-          "raw": "0:27s",
-          "seconds": 27
+          "raw": "0:26s",
+          "seconds": 26
         },
         {
           "raw": "1:10min",
@@ -265,8 +267,8 @@
       {
         "category": "Zip",
         "thomas_raw": "0:28s",
-        "dani_raw": "0:27s",
-        "diff": "Dani won by 1s",
+        "dani_raw": "0:26s",
+        "diff": "Dani won by 2s",
         "winner": "dani"
       },
       {
@@ -867,10 +869,23 @@
     let selectedDate = "";
     let calCurrentMonth = new Date();
 
-    const dates = Object.keys(database).sort((a, b) => b.localeCompare(a));
-    if (dates.length > 0) {
-      selectedDate = dates[0];
-      calCurrentMonth = new Date(selectedDate);
+    async function initDatabase() {
+      try {
+        const res = await fetch('database.json?cache=' + Date.now());
+        if (res.ok) {
+          database = await res.json();
+          console.log("Successfully fetched live database.json");
+        }
+      } catch (e) {
+        console.log("Using initial fallback database state:", e);
+      }
+
+      const dates = Object.keys(database).sort((a, b) => b.localeCompare(a));
+      if (dates.length > 0) {
+        selectedDate = dates[0];
+        calCurrentMonth = new Date(selectedDate);
+      }
+      renderView();
     }
 
     function getRelativeUrl(pathStr) {
@@ -1140,7 +1155,7 @@
       renderCalendar();
     };
 
-    renderView();
+    window.addEventListener('DOMContentLoaded', initDatabase);
   </script>
 </body>
 </html>
