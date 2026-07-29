@@ -52,7 +52,8 @@
     }
     .img-container { display: flex; gap: 10px; margin-top: 10px; }
     .img-col { flex: 1; background: #161b22; padding: 8px; border-radius: 8px; border: 1px solid #30363d; text-align: center; }
-    .img-col img { width: 100%; height: auto; border-radius: 6px; display: block; margin-top: 6px; }
+    .img-col img { width: 100%; height: auto; border-radius: 6px; display: block; margin-top: 6px; cursor: pointer; transition: transform 0.2s; }
+    .img-col img:hover { transform: scale(1.02); }
     .img-col p { font-size: 12px; font-weight: 600; color: #58a6ff; }
 
     /* MODAL OVERLAYS */
@@ -132,16 +133,16 @@
     <tbody id="tableBody"></tbody>
   </table>
 
-  <div class="section-title">📷 Screenshots</div>
+  <div class="section-title">📷 Screenshots (Click to View Full)</div>
 
   <div class="img-container">
     <div class="img-col">
       <p>Thomas</p>
-      <img id="thomasImg" src="" alt="Thomas Screenshot">
+      <img id="thomasImg" src="" alt="Thomas Screenshot" title="Click to view full screenshot">
     </div>
     <div class="img-col">
       <p>Dani</p>
-      <img id="daniImg" src="" alt="Dani Screenshot">
+      <img id="daniImg" src="" alt="Dani Screenshot" title="Click to view full screenshot">
     </div>
   </div>
 
@@ -865,12 +866,17 @@
 
     let selectedDate = "";
     let calCurrentMonth = new Date();
-    let unsavedChanges = false;
 
     const dates = Object.keys(database).sort((a, b) => b.localeCompare(a));
     if (dates.length > 0) {
       selectedDate = dates[0];
       calCurrentMonth = new Date(selectedDate);
+    }
+
+    function getRelativeUrl(pathStr) {
+      if (!pathStr) return '';
+      const clean = pathStr.replace(/^[./\\]+/, '');
+      return `../${clean}`;
     }
 
     function showToast(msg) {
@@ -968,16 +974,11 @@
         `;
       }).join('');
 
-      // Fix relative paths for thumbnails if needed
-      const tThumb = entry.thomas.thumbnail.startsWith('/') ? entry.thomas.thumbnail : `../${entry.thomas.thumbnail.replace(/^Thumbnails\//, 'Thumbnails/')}`;
-      const dThumb = entry.dani.thumbnail.startsWith('/') ? entry.dani.thumbnail : `../${entry.dani.thumbnail.replace(/^Thumbnails\//, 'Thumbnails/')}`;
+      thomasImg.src = getRelativeUrl(entry.thomas.thumbnail);
+      daniImg.src = getRelativeUrl(entry.dani.thumbnail);
 
-      thomasImg.src = entry.thomas.thumbnail;
-      daniImg.src = entry.dani.thumbnail;
-      
-      // Fallback relative path check
-      thomasImg.onerror = () => { thomasImg.src = tThumb; };
-      daniImg.onerror = () => { daniImg.src = dThumb; };
+      thomasImg.onclick = () => { window.open(getRelativeUrl(entry.thomas.screenshot), '_blank'); };
+      daniImg.onclick = () => { window.open(getRelativeUrl(entry.dani.screenshot), '_blank'); };
     }
 
     // CALENDAR ARCHIVE LOGIC
@@ -1067,7 +1068,6 @@
       });
 
       recalculateEntry(entry);
-      unsavedChanges = true;
       document.getElementById('saveDbBtn').style.display = 'block';
       renderView();
       closeModals();
@@ -1080,7 +1080,6 @@
         delete database[selectedDate];
         const remaining = Object.keys(database).sort((a, b) => b.localeCompare(a));
         selectedDate = remaining.length > 0 ? remaining[0] : "";
-        unsavedChanges = true;
         document.getElementById('saveDbBtn').style.display = 'block';
         renderView();
         showToast("🗑️ Deleted entry. Click 'Save Changes' to update database.json");
@@ -1090,7 +1089,6 @@
     async function saveDatabaseFile() {
       const jsonText = JSON.stringify(database, null, 2);
       
-      // Try File System Access API
       if (window.showSaveFilePicker) {
         try {
           const handle = await window.showSaveFilePicker({
@@ -1100,7 +1098,6 @@
           const writable = await handle.createWritable();
           await writable.write(jsonText);
           await writable.close();
-          unsavedChanges = false;
           document.getElementById('saveDbBtn').style.display = 'none';
           showToast("💾 Saved to database.json! Watcher will push to GitHub.");
           return;
@@ -1109,7 +1106,6 @@
         }
       }
 
-      // Fallback Blob download
       const blob = new Blob([jsonText], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -1118,7 +1114,6 @@
       a.click();
       URL.revokeObjectURL(url);
 
-      unsavedChanges = false;
       document.getElementById('saveDbBtn').style.display = 'none';
       showToast("💾 database.json downloaded! Save it to your files/ folder.");
     }
