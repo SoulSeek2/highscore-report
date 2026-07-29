@@ -1,0 +1,4 @@
+Images/
+*.png
+!Thumbnails/*.png
+.DS_Store

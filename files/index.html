@@ -3,214 +3,1149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Highscore Archive</title>
+  <title>Matchup Results & Archive</title>
   <style>
-    body { background: #0d1117; color: #e6edf3; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-    .page { max-width: 980px; margin: 0 auto; padding: 18px; }
-    h1 { font-size: 28px; margin-bottom: 8px; color: #58a6ff; }
-    .intro { color: #8b949e; margin-bottom: 20px; }
-    .card { background: #161b22; border: 1px solid #21262d; border-radius: 14px; padding: 18px; margin-bottom: 18px; }
-    .grid { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
-    .grid-full { grid-column: 1 / -1; }
-    .selected { border-color: #58a6ff; }
-    .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .button { display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; background: #21262d; border-radius: 10px; color: #e6edf3; text-decoration: none; }
-    a { color: #58a6ff; text-decoration: none; }
-    input[type=date] { background: #0d1117; color: #e6edf3; border: 1px solid #30363d; border-radius: 10px; padding: 10px 12px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 14px; }
-    th, td { padding: 10px 12px; border-bottom: 1px solid #30363d; text-align: left; }
-    th { background: #161b22; }
-    .cat-cell { width: 180px; }
-    .winner { color: #3fb950; font-weight: 700; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0d1117; color: #e6edf3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 14px; max-width: 640px; margin: 0 auto;
+    }
+    .header-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 14px; flex-wrap: wrap; gap: 8px;
+    }
+    h2 { font-size: 19px; color: #58a6ff; font-weight: 700; }
+    .badge {
+      background: #21262d; border: 1px solid #30363d; padding: 4px 10px;
+      border-radius: 12px; font-size: 12px; color: #8b949e;
+    }
+    .btn-group { display: flex; gap: 6px; }
+    .btn {
+      background: #21262d; border: 1px solid #30363d; color: #c9d1d9;
+      padding: 6px 12px; border-radius: 6px; font-size: 13px; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 4px; transition: all 0.2s;
+    }
+    .btn:hover { background: #30363d; color: #58a6ff; border-color: #58a6ff; }
+    .btn-primary { background: #238636; border-color: #2ea043; color: #ffffff; font-weight: 600; }
+    .btn-primary:hover { background: #2ea043; }
+    .btn-danger { background: rgba(248,81,73,0.15); color: #f85149; border-color: rgba(248,81,73,0.4); }
+    .btn-danger:hover { background: #f85149; color: #fff; }
+
+    .results-table {
+      width: 100%; border-collapse: collapse; background: #161b22;
+      border-radius: 8px; overflow: hidden; font-size: 14px; margin-bottom: 16px;
+      border: 1px solid #30363d;
+    }
+    .results-table th, .results-table td {
+      padding: 10px 10px; text-align: center; border-bottom: 1px solid #21262d;
+    }
+    .results-table th { background: #161b22; color: #8b949e; font-weight: 600; font-size: 13px; }
+    .cat-cell { font-weight: 600; text-align: left !important; padding-left: 14px !important; color: #e6edf3; }
+    .margin-cell { font-size: 12px; color: #8b949e; }
+    .winner { color: #3fb950; font-weight: bold; background: rgba(63, 185, 80, 0.15); }
     .loser { color: #f85149; }
-    .thumbnail { width: 100%; max-height: 210px; object-fit: contain; border-radius: 10px; }
-    .helper { color: #8b949e; font-size: 14px; margin-top: 8px; }
-    .button-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
-    .calendar-nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
-    .calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
-    .day { background: #0d1117; border: 1px solid #21262d; border-radius: 12px; min-height: 64px; padding: 10px 8px; text-align: center; color: #c9d1d9; cursor: pointer; }
-    .day.available { border-color: #58a6ff; background: #161b22; }
-    .day.selected { background: #58a6ff; color: #0d1117; }
-    .day.empty { opacity: 0.35; cursor: default; }
-    .detail-grid { display: grid; grid-template-columns: 1.9fr 1fr; gap: 18px; align-items: start; }
-    .detail-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    th, td { padding: 10px 12px; border-bottom: 1px solid #30363d; }
-    th { background: #21262d; text-align: left; }
-    .player-block { margin-bottom: 18px; }
-    .player-block strong { display: block; margin-bottom: 10px; color: #58a6ff; }
-    .simple-link { color: #58a6ff; }
+
+    .section-title {
+      font-size: 13px; font-weight: 600; color: #8b949e; margin-bottom: 8px; text-align: center;
+      letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .img-container { display: flex; gap: 10px; margin-top: 10px; }
+    .img-col { flex: 1; background: #161b22; padding: 8px; border-radius: 8px; border: 1px solid #30363d; text-align: center; }
+    .img-col img { width: 100%; height: auto; border-radius: 6px; display: block; margin-top: 6px; }
+    .img-col p { font-size: 12px; font-weight: 600; color: #58a6ff; }
+
+    /* MODAL OVERLAYS */
+    .modal-backdrop {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
+      display: none; justify-content: center; align-items: center; z-index: 999;
+      padding: 16px;
+    }
+    .modal-backdrop.active { display: flex; }
+    .modal-card {
+      background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+      width: 100%; max-width: 440px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .modal-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid #21262d;
+    }
+    .modal-header h3 { font-size: 16px; color: #58a6ff; }
+    .close-btn { background: none; border: none; color: #8b949e; font-size: 18px; cursor: pointer; }
+    .close-btn:hover { color: #e6edf3; }
+
+    /* CALENDAR ARCHIVE */
+    .cal-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
+    .cal-day-name { font-size: 11px; color: #8b949e; font-weight: 600; padding-bottom: 4px; }
+    .cal-cell {
+      background: #0d1117; border: 1px solid #21262d; border-radius: 6px;
+      padding: 8px 4px; font-size: 12px; color: #484f58; cursor: default; position: relative;
+    }
+    .cal-cell.available {
+      border-color: #58a6ff; background: rgba(88,166,255,0.08); color: #e6edf3;
+      cursor: pointer; font-weight: 600;
+    }
+    .cal-cell.available:hover { background: #58a6ff; color: #0d1117; }
+    .cal-cell.selected { border-color: #3fb950; background: rgba(63,185,80,0.25); color: #3fb950; font-weight: bold; }
+
+    /* EDIT FORM */
+    .edit-table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+    .edit-table td { padding: 6px 4px; border-bottom: 1px solid #21262d; }
+    .edit-input {
+      width: 100%; background: #0d1117; border: 1px solid #30363d; color: #e6edf3;
+      padding: 6px 8px; border-radius: 4px; text-align: center; font-size: 13px;
+    }
+    .edit-input:focus { border-color: #58a6ff; outline: none; }
+
+    .toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: #238636; color: #fff; padding: 10px 18px; border-radius: 8px;
+      font-size: 13px; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.4); z-index: 1000;
+    }
   </style>
 </head>
 <body>
-  <div class="page">
-    <h1>Highscore Archive</h1>
-    <p class="intro">Latest comparison is always shown first. Click a day in the calendar to load an entry without reloading the page.</p>
 
-    <div class="card">
-      <div class="calendar-nav">
-        <button id="prevMonth" class="button">‹</button>
-        <strong id="calendarLabel"></strong>
-        <button id="nextMonth" class="button">›</button>
-      </div>
-      <div class="calendar-grid" id="calendar"></div>
-      <p class="helper">Blue-bordered dates contain a saved log. Click to view it.</p>
+  <div class="header-bar">
+    <div>
+      <h2>🏆 Matchup Comparison</h2>
+      <span id="dateBadge" class="badge">Loading...</span>
     </div>
-
-    <div id="detailCard" class="card"></div>
-
-    <div class="card">
-      <h2>Available Dates</h2>
-      <ul id="dateList"></ul>
+    <div class="btn-group">
+      <button id="archiveBtn" class="btn">📅 Archive</button>
+      <button id="editBtn" class="btn">✏️ Edit</button>
+      <button id="deleteBtn" class="btn btn-danger">🗑️ Delete</button>
     </div>
   </div>
 
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th style="text-align:left; padding-left:14px;">Category</th>
+        <th>Thomas</th>
+        <th>Dani</th>
+        <th>Margin</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <div class="section-title">📷 Screenshots</div>
+
+  <div class="img-container">
+    <div class="img-col">
+      <p>Thomas</p>
+      <img id="thomasImg" src="" alt="Thomas Screenshot">
+    </div>
+    <div class="img-col">
+      <p>Dani</p>
+      <img id="daniImg" src="" alt="Dani Screenshot">
+    </div>
+  </div>
+
+  <div style="margin-top: 16px; text-align: center;">
+    <button id="saveDbBtn" class="btn btn-primary" style="width: 100%; padding: 10px; display: none;">
+      💾 Save Changes to database.json
+    </button>
+  </div>
+
+  <!-- CALENDAR ARCHIVE MODAL -->
+  <div id="calendarModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>📅 Select Date Archive</h3>
+        <button class="close-btn" onclick="closeModals()">✕</button>
+      </div>
+      <div class="cal-nav">
+        <button id="prevMonth" class="btn">‹</button>
+        <strong id="calMonthLabel" style="color:#58a6ff; font-size:14px;"></strong>
+        <button id="nextMonth" class="btn">›</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+  </div>
+
+  <!-- EDIT ENTRY MODAL -->
+  <div id="editModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="editModalTitle">✏️ Edit Comparison</h3>
+        <button class="close-btn" onclick="closeModals()">✕</button>
+      </div>
+      <table class="edit-table">
+        <thead>
+          <tr>
+            <th style="text-align:left; font-size:12px; color:#8b949e;">Category</th>
+            <th style="font-size:12px; color:#58a6ff;">Thomas</th>
+            <th style="font-size:12px; color:#58a6ff;">Dani</th>
+          </tr>
+        </thead>
+        <tbody id="editFormBody"></tbody>
+      </table>
+      <div style="display:flex; justify-content:flex-end; gap:8px;">
+        <button class="btn" onclick="closeModals()">Cancel</button>
+        <button id="submitEditBtn" class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
   <script>
-    const logs = [{"date": "2026-07-29", "created_at": "2026-07-29 17:24:07", "summary": "Thomas 3 - 3 Dani", "daily_page": "2026-07-29.html", "player_a": {"name": "Dani", "screenshot": "..\\screenshots\\compiled_1785308444754.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1785308444754.jpg", "times": [{"raw": "0:27s", "seconds": 27}, {"raw": "1:10min", "seconds": 70}, {"raw": "1:13min", "seconds": 73}, {"raw": "0:40s", "seconds": 40}, {"raw": "2:05min", "seconds": 125}, {"raw": "0:31s", "seconds": 31}]}, "player_b": {"name": "Thomas", "screenshot": "..\\screenshots\\compiled_1785294354717.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1785294354717.jpg", "times": [{"raw": "0:28s", "seconds": 28}, {"raw": "0:41s", "seconds": 41}, {"raw": "0:34s", "seconds": 34}, {"raw": "0:28s", "seconds": 28}, {"raw": "2:41m", "seconds": 161}, {"raw": "0:38s", "seconds": 38}]}, "rows": [{"category": "Zip", "my_raw": "0:27s", "sis_raw": "0:28s", "diff": "Thomas won by 1s", "winner": "my"}, {"category": "Lotus", "my_raw": "1:10min", "sis_raw": "0:41s", "diff": "Dani won by 29s", "winner": "sis"}, {"category": "Panda", "my_raw": "1:13min", "sis_raw": "0:34s", "diff": "Dani won by 39s", "winner": "sis"}, {"category": "Libra", "my_raw": "0:40s", "sis_raw": "0:28s", "diff": "Dani won by 12s", "winner": "sis"}, {"category": "Sums", "my_raw": "2:05min", "sis_raw": "2:41m", "diff": "Thomas won by 36s", "winner": "my"}, {"category": "Hashi", "my_raw": "0:31s", "sis_raw": "0:38s", "diff": "Thomas won by 7s", "winner": "my"}], "table_rows": "<tr><td class=\"cat-cell\">Zip</td><td class=\"winner\">0:27s</td><td class=\"\">0:28s</td><td>Thomas won by 1s</td></tr>\n<tr><td class=\"cat-cell\">Lotus</td><td class=\"\">1:10min</td><td class=\"winner\">0:41s</td><td>Dani won by 29s</td></tr>\n<tr><td class=\"cat-cell\">Panda</td><td class=\"\">1:13min</td><td class=\"winner\">0:34s</td><td>Dani won by 39s</td></tr>\n<tr><td class=\"cat-cell\">Libra</td><td class=\"\">0:40s</td><td class=\"winner\">0:28s</td><td>Dani won by 12s</td></tr>\n<tr><td class=\"cat-cell\">Sums</td><td class=\"winner\">2:05min</td><td class=\"\">2:41m</td><td>Thomas won by 36s</td></tr>\n<tr><td class=\"cat-cell\">Hashi</td><td class=\"winner\">0:31s</td><td class=\"\">0:38s</td><td>Thomas won by 7s</td></tr>"}, {"date": "2026-07-28", "created_at": "2026-07-29 17:24:04", "summary": "Thomas 1 - 5 Dani", "daily_page": "2026-07-28.html", "player_a": {"name": "Dani", "screenshot": "..\\screenshots\\compiled_1785193643168.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1785193643168.jpg", "times": [{"raw": "0:21s", "seconds": 21}, {"raw": "0:33s", "seconds": 33}, {"raw": "1:02min", "seconds": 62}, {"raw": "0:50s", "seconds": 50}, {"raw": "1:17min", "seconds": 77}, {"raw": "0:55s", "seconds": 55}]}, "player_b": {"name": "Thomas", "screenshot": "..\\screenshots\\compiled_1785208820603.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1785208820603.jpg", "times": [{"raw": "0:13s", "seconds": 13}, {"raw": "0:21s", "seconds": 21}, {"raw": "1:31m", "seconds": 91}, {"raw": "0:32s", "seconds": 32}, {"raw": "0:52s", "seconds": 52}, {"raw": "0:26s", "seconds": 26}]}, "rows": [{"category": "Zip", "my_raw": "0:21s", "sis_raw": "0:13s", "diff": "Dani won by 8s", "winner": "sis"}, {"category": "Lotus", "my_raw": "0:33s", "sis_raw": "0:21s", "diff": "Dani won by 12s", "winner": "sis"}, {"category": "Panda", "my_raw": "1:02min", "sis_raw": "1:31m", "diff": "Thomas won by 29s", "winner": "my"}, {"category": "Libra", "my_raw": "0:50s", "sis_raw": "0:32s", "diff": "Dani won by 18s", "winner": "sis"}, {"category": "Sums", "my_raw": "1:17min", "sis_raw": "0:52s", "diff": "Dani won by 25s", "winner": "sis"}, {"category": "Hashi", "my_raw": "0:55s", "sis_raw": "0:26s", "diff": "Dani won by 29s", "winner": "sis"}], "table_rows": "<tr><td class=\"cat-cell\">Zip</td><td class=\"\">0:21s</td><td class=\"winner\">0:13s</td><td>Dani won by 8s</td></tr>\n<tr><td class=\"cat-cell\">Lotus</td><td class=\"\">0:33s</td><td class=\"winner\">0:21s</td><td>Dani won by 12s</td></tr>\n<tr><td class=\"cat-cell\">Panda</td><td class=\"winner\">1:02min</td><td class=\"\">1:31m</td><td>Thomas won by 29s</td></tr>\n<tr><td class=\"cat-cell\">Libra</td><td class=\"\">0:50s</td><td class=\"winner\">0:32s</td><td>Dani won by 18s</td></tr>\n<tr><td class=\"cat-cell\">Sums</td><td class=\"\">1:17min</td><td class=\"winner\">0:52s</td><td>Dani won by 25s</td></tr>\n<tr><td class=\"cat-cell\">Hashi</td><td class=\"\">0:55s</td><td class=\"winner\">0:26s</td><td>Dani won by 29s</td></tr>"}, {"date": "2026-07-27", "created_at": "2026-07-29 17:24:02", "summary": "Thomas 4 - 2 Dani", "daily_page": "2026-07-27.html", "player_a": {"name": "Dani", "screenshot": "..\\screenshots\\compiled_1785104368776.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1785104368776.jpg", "times": [{"raw": "0:12s", "seconds": 12}, {"raw": "1:02min", "seconds": 62}, {"raw": "0:39s", "seconds": 39}, {"raw": "0:31s", "seconds": 31}, {"raw": "0:59s", "seconds": 59}, {"raw": "0:13s", "seconds": 13}]}, "player_b": {"name": "Thomas", "screenshot": "..\\screenshots\\compiled_1785120453002.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1785120453002.jpg", "times": [{"raw": "0:14s", "seconds": 14}, {"raw": "0:46s", "seconds": 46}, {"raw": "0:43s", "seconds": 43}, {"raw": "0:35s", "seconds": 35}, {"raw": "1:09m", "seconds": 69}, {"raw": "0:10s", "seconds": 10}]}, "rows": [{"category": "Zip", "my_raw": "0:12s", "sis_raw": "0:14s", "diff": "Thomas won by 2s", "winner": "my"}, {"category": "Lotus", "my_raw": "1:02min", "sis_raw": "0:46s", "diff": "Dani won by 16s", "winner": "sis"}, {"category": "Panda", "my_raw": "0:39s", "sis_raw": "0:43s", "diff": "Thomas won by 4s", "winner": "my"}, {"category": "Libra", "my_raw": "0:31s", "sis_raw": "0:35s", "diff": "Thomas won by 4s", "winner": "my"}, {"category": "Sums", "my_raw": "0:59s", "sis_raw": "1:09m", "diff": "Thomas won by 10s", "winner": "my"}, {"category": "Hashi", "my_raw": "0:13s", "sis_raw": "0:10s", "diff": "Dani won by 3s", "winner": "sis"}], "table_rows": "<tr><td class=\"cat-cell\">Zip</td><td class=\"winner\">0:12s</td><td class=\"\">0:14s</td><td>Thomas won by 2s</td></tr>\n<tr><td class=\"cat-cell\">Lotus</td><td class=\"\">1:02min</td><td class=\"winner\">0:46s</td><td>Dani won by 16s</td></tr>\n<tr><td class=\"cat-cell\">Panda</td><td class=\"winner\">0:39s</td><td class=\"\">0:43s</td><td>Thomas won by 4s</td></tr>\n<tr><td class=\"cat-cell\">Libra</td><td class=\"winner\">0:31s</td><td class=\"\">0:35s</td><td>Thomas won by 4s</td></tr>\n<tr><td class=\"cat-cell\">Sums</td><td class=\"winner\">0:59s</td><td class=\"\">1:09m</td><td>Thomas won by 10s</td></tr>\n<tr><td class=\"cat-cell\">Hashi</td><td class=\"\">0:13s</td><td class=\"winner\">0:10s</td><td>Dani won by 3s</td></tr>"}, {"date": "2026-07-26", "created_at": "2026-07-29 17:23:59", "summary": "Thomas 1 - 5 Dani", "daily_page": "2026-07-26.html", "player_a": {"name": "Dani", "screenshot": "..\\screenshots\\compiled_1785079841125.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1785079841125.jpg", "times": [{"raw": "0:30s", "seconds": 30}, {"raw": "1:22min", "seconds": 82}, {"raw": "2:27min", "seconds": 147}, {"raw": "1:17min", "seconds": 77}, {"raw": "2:21min", "seconds": 141}, {"raw": "0:47s", "seconds": 47}]}, "player_b": {"name": "Thomas", "screenshot": "..\\screenshots\\compiled_1785060517162.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1785060517162.jpg", "times": [{"raw": "0:29s", "seconds": 29}, {"raw": "1:19m", "seconds": 79}, {"raw": "2:41m", "seconds": 161}, {"raw": "1:00m", "seconds": 60}, {"raw": "2:09m", "seconds": 129}, {"raw": "0:41s", "seconds": 41}]}, "rows": [{"category": "Zip", "my_raw": "0:30s", "sis_raw": "0:29s", "diff": "Dani won by 1s", "winner": "sis"}, {"category": "Lotus", "my_raw": "1:22min", "sis_raw": "1:19m", "diff": "Dani won by 3s", "winner": "sis"}, {"category": "Panda", "my_raw": "2:27min", "sis_raw": "2:41m", "diff": "Thomas won by 14s", "winner": "my"}, {"category": "Libra", "my_raw": "1:17min", "sis_raw": "1:00m", "diff": "Dani won by 17s", "winner": "sis"}, {"category": "Sums", "my_raw": "2:21min", "sis_raw": "2:09m", "diff": "Dani won by 12s", "winner": "sis"}, {"category": "Hashi", "my_raw": "0:47s", "sis_raw": "0:41s", "diff": "Dani won by 6s", "winner": "sis"}], "table_rows": "<tr><td class=\"cat-cell\">Zip</td><td class=\"\">0:30s</td><td class=\"winner\">0:29s</td><td>Dani won by 1s</td></tr>\n<tr><td class=\"cat-cell\">Lotus</td><td class=\"\">1:22min</td><td class=\"winner\">1:19m</td><td>Dani won by 3s</td></tr>\n<tr><td class=\"cat-cell\">Panda</td><td class=\"winner\">2:27min</td><td class=\"\">2:41m</td><td>Thomas won by 14s</td></tr>\n<tr><td class=\"cat-cell\">Libra</td><td class=\"\">1:17min</td><td class=\"winner\">1:00m</td><td>Dani won by 17s</td></tr>\n<tr><td class=\"cat-cell\">Sums</td><td class=\"\">2:21min</td><td class=\"winner\">2:09m</td><td>Dani won by 12s</td></tr>\n<tr><td class=\"cat-cell\">Hashi</td><td class=\"\">0:47s</td><td class=\"winner\">0:41s</td><td>Dani won by 6s</td></tr>"}, {"date": "2026-07-25", "created_at": "2026-07-29 17:23:56", "summary": "Thomas 2 - 4 Dani", "daily_page": "2026-07-25.html", "player_a": {"name": "Dani", "screenshot": "..\\screenshots\\compiled_1784936379973.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1784936379973.jpg", "times": [{"raw": "0:23s", "seconds": 23}, {"raw": "1:16min", "seconds": 76}, {"raw": "1:01min", "seconds": 61}, {"raw": "0:45s", "seconds": 45}, {"raw": "1:01min", "seconds": 61}, {"raw": "0:29s", "seconds": 29}]}, "player_b": {"name": "Thomas", "screenshot": "..\\screenshots\\compiled_1784967547510.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1784967547510.jpg", "times": [{"raw": "0:15s", "seconds": 15}, {"raw": "0:53s", "seconds": 53}, {"raw": "0:38s", "seconds": 38}, {"raw": "1:08m", "seconds": 68}, {"raw": "0:52s", "seconds": 52}, {"raw": "0:35s", "seconds": 35}]}, "rows": [{"category": "Zip", "my_raw": "0:23s", "sis_raw": "0:15s", "diff": "Dani won by 8s", "winner": "sis"}, {"category": "Lotus", "my_raw": "1:16min", "sis_raw": "0:53s", "diff": "Dani won by 23s", "winner": "sis"}, {"category": "Panda", "my_raw": "1:01min", "sis_raw": "0:38s", "diff": "Dani won by 23s", "winner": "sis"}, {"category": "Libra", "my_raw": "0:45s", "sis_raw": "1:08m", "diff": "Thomas won by 23s", "winner": "my"}, {"category": "Sums", "my_raw": "1:01min", "sis_raw": "0:52s", "diff": "Dani won by 9s", "winner": "sis"}, {"category": "Hashi", "my_raw": "0:29s", "sis_raw": "0:35s", "diff": "Thomas won by 6s", "winner": "my"}], "table_rows": "<tr><td class=\"cat-cell\">Zip</td><td class=\"\">0:23s</td><td class=\"winner\">0:15s</td><td>Dani won by 8s</td></tr>\n<tr><td class=\"cat-cell\">Lotus</td><td class=\"\">1:16min</td><td class=\"winner\">0:53s</td><td>Dani won by 23s</td></tr>\n<tr><td class=\"cat-cell\">Panda</td><td class=\"\">1:01min</td><td class=\"winner\">0:38s</td><td>Dani won by 23s</td></tr>\n<tr><td class=\"cat-cell\">Libra</td><td class=\"winner\">0:45s</td><td class=\"\">1:08m</td><td>Thomas won by 23s</td></tr>\n<tr><td class=\"cat-cell\">Sums</td><td class=\"\">1:01min</td><td class=\"winner\">0:52s</td><td>Dani won by 9s</td></tr>\n<tr><td class=\"cat-cell\">Hashi</td><td class=\"winner\">0:29s</td><td class=\"\">0:35s</td><td>Thomas won by 6s</td></tr>"}, {"date": "2026-07-24", "created_at": "2026-07-29 17:23:53", "summary": "Thomas 4 - 2 Dani", "daily_page": "2026-07-24.html", "player_a": {"name": "Thomas", "screenshot": "..\\screenshots\\compiled_1784898505479.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1784898505479.jpg", "times": [{"raw": "0:10s", "seconds": 10}, {"raw": "0:59s", "seconds": 59}, {"raw": "1:06m", "seconds": 66}, {"raw": "0:31s", "seconds": 31}, {"raw": "1:39m", "seconds": 99}, {"raw": "0:21s", "seconds": 21}]}, "player_b": {"name": "Dani", "screenshot": "..\\screenshots\\compiled_1784849781072.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1784849781072.jpg", "times": [{"raw": "0:09s", "seconds": 9}, {"raw": "1:44min", "seconds": 104}, {"raw": "1:03min", "seconds": 63}, {"raw": "0:56s", "seconds": 56}, {"raw": "1:41min", "seconds": 101}, {"raw": "0:23s", "seconds": 23}]}, "rows": [{"category": "Zip", "my_raw": "0:10s", "sis_raw": "0:09s", "diff": "Dani won by 1s", "winner": "sis"}, {"category": "Lotus", "my_raw": "0:59s", "sis_raw": "1:44min", "diff": "Thomas won by 45s", "winner": "my"}, {"category": "Panda", "my_raw": "1:06m", "sis_raw": "1:03min", "diff": "Dani won by 3s", "winner": "sis"}, {"category": "Libra", "my_raw": "0:31s", "sis_raw": "0:56s", "diff": "Thomas won by 25s", "winner": "my"}, {"category": "Sums", "my_raw": "1:39m", "sis_raw": "1:41min", "diff": "Thomas won by 2s", "winner": "my"}, {"category": "Hashi", "my_raw": "0:21s", "sis_raw": "0:23s", "diff": "Thomas won by 2s", "winner": "my"}], "table_rows": "<tr><td class=\"cat-cell\">Zip</td><td class=\"\">0:10s</td><td class=\"winner\">0:09s</td><td>Dani won by 1s</td></tr>\n<tr><td class=\"cat-cell\">Lotus</td><td class=\"winner\">0:59s</td><td class=\"\">1:44min</td><td>Thomas won by 45s</td></tr>\n<tr><td class=\"cat-cell\">Panda</td><td class=\"\">1:06m</td><td class=\"winner\">1:03min</td><td>Dani won by 3s</td></tr>\n<tr><td class=\"cat-cell\">Libra</td><td class=\"winner\">0:31s</td><td class=\"\">0:56s</td><td>Thomas won by 25s</td></tr>\n<tr><td class=\"cat-cell\">Sums</td><td class=\"winner\">1:39m</td><td class=\"\">1:41min</td><td>Thomas won by 2s</td></tr>\n<tr><td class=\"cat-cell\">Hashi</td><td class=\"winner\">0:21s</td><td class=\"\">0:23s</td><td>Thomas won by 2s</td></tr>"}];
-    const detailCard = document.getElementById('detailCard');
-    const dateList = document.getElementById('dateList');
-    const calendar = document.getElementById('calendar');
-    const calendarLabel = document.getElementById('calendarLabel');
-    const prevMonth = document.getElementById('prevMonth');
-    const nextMonth = document.getElementById('nextMonth');
+    const database = {
+  "2026-07-29": {
+    "date": "2026-07-29",
+    "created_at": "2026-07-29 17:24:07",
+    "thomas": {
+      "name": "Thomas",
+      "screenshot": "Images/compiled_1785294354717.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1785294354717.jpg",
+      "times": [
+        {
+          "raw": "0:28s",
+          "seconds": 28
+        },
+        {
+          "raw": "0:41s",
+          "seconds": 41
+        },
+        {
+          "raw": "0:34s",
+          "seconds": 34
+        },
+        {
+          "raw": "0:28s",
+          "seconds": 28
+        },
+        {
+          "raw": "2:41m",
+          "seconds": 161
+        },
+        {
+          "raw": "0:38s",
+          "seconds": 38
+        }
+      ]
+    },
+    "dani": {
+      "name": "Dani",
+      "screenshot": "Images/compiled_1785308444754.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1785308444754.jpg",
+      "times": [
+        {
+          "raw": "0:27s",
+          "seconds": 27
+        },
+        {
+          "raw": "1:10min",
+          "seconds": 70
+        },
+        {
+          "raw": "1:13min",
+          "seconds": 73
+        },
+        {
+          "raw": "0:40s",
+          "seconds": 40
+        },
+        {
+          "raw": "2:05min",
+          "seconds": 125
+        },
+        {
+          "raw": "0:31s",
+          "seconds": 31
+        }
+      ]
+    },
+    "rows": [
+      {
+        "category": "Zip",
+        "thomas_raw": "0:28s",
+        "dani_raw": "0:27s",
+        "diff": "Dani won by 1s",
+        "winner": "dani"
+      },
+      {
+        "category": "Lotus",
+        "thomas_raw": "0:41s",
+        "dani_raw": "1:10min",
+        "diff": "Thomas won by 29s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Panda",
+        "thomas_raw": "0:34s",
+        "dani_raw": "1:13min",
+        "diff": "Thomas won by 39s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Libra",
+        "thomas_raw": "0:28s",
+        "dani_raw": "0:40s",
+        "diff": "Thomas won by 12s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Sums",
+        "thomas_raw": "2:41m",
+        "dani_raw": "2:05min",
+        "diff": "Dani won by 36s",
+        "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:38s",
+        "dani_raw": "0:31s",
+        "diff": "Dani won by 7s",
+        "winner": "dani"
+      }
+    ],
+    "summary": "Thomas 3 - 3 Dani"
+  },
+  "2026-07-28": {
+    "date": "2026-07-28",
+    "created_at": "2026-07-29 17:24:04",
+    "thomas": {
+      "name": "Thomas",
+      "screenshot": "Images/compiled_1785208820603.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1785208820603.jpg",
+      "times": [
+        {
+          "raw": "0:13s",
+          "seconds": 13
+        },
+        {
+          "raw": "0:21s",
+          "seconds": 21
+        },
+        {
+          "raw": "1:31m",
+          "seconds": 91
+        },
+        {
+          "raw": "0:32s",
+          "seconds": 32
+        },
+        {
+          "raw": "0:52s",
+          "seconds": 52
+        },
+        {
+          "raw": "0:26s",
+          "seconds": 26
+        }
+      ]
+    },
+    "dani": {
+      "name": "Dani",
+      "screenshot": "Images/compiled_1785193643168.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1785193643168.jpg",
+      "times": [
+        {
+          "raw": "0:21s",
+          "seconds": 21
+        },
+        {
+          "raw": "0:33s",
+          "seconds": 33
+        },
+        {
+          "raw": "1:02min",
+          "seconds": 62
+        },
+        {
+          "raw": "0:50s",
+          "seconds": 50
+        },
+        {
+          "raw": "1:17min",
+          "seconds": 77
+        },
+        {
+          "raw": "0:55s",
+          "seconds": 55
+        }
+      ]
+    },
+    "rows": [
+      {
+        "category": "Zip",
+        "thomas_raw": "0:13s",
+        "dani_raw": "0:21s",
+        "diff": "Thomas won by 8s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Lotus",
+        "thomas_raw": "0:21s",
+        "dani_raw": "0:33s",
+        "diff": "Thomas won by 12s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Panda",
+        "thomas_raw": "1:31m",
+        "dani_raw": "1:02min",
+        "diff": "Dani won by 29s",
+        "winner": "dani"
+      },
+      {
+        "category": "Libra",
+        "thomas_raw": "0:32s",
+        "dani_raw": "0:50s",
+        "diff": "Thomas won by 18s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Sums",
+        "thomas_raw": "0:52s",
+        "dani_raw": "1:17min",
+        "diff": "Thomas won by 25s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:26s",
+        "dani_raw": "0:55s",
+        "diff": "Thomas won by 29s",
+        "winner": "thomas"
+      }
+    ],
+    "summary": "Thomas 5 - 1 Dani"
+  },
+  "2026-07-27": {
+    "date": "2026-07-27",
+    "created_at": "2026-07-29 17:24:02",
+    "thomas": {
+      "name": "Thomas",
+      "screenshot": "Images/compiled_1785120453002.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1785120453002.jpg",
+      "times": [
+        {
+          "raw": "0:14s",
+          "seconds": 14
+        },
+        {
+          "raw": "0:46s",
+          "seconds": 46
+        },
+        {
+          "raw": "0:43s",
+          "seconds": 43
+        },
+        {
+          "raw": "0:35s",
+          "seconds": 35
+        },
+        {
+          "raw": "1:09m",
+          "seconds": 69
+        },
+        {
+          "raw": "0:10s",
+          "seconds": 10
+        }
+      ]
+    },
+    "dani": {
+      "name": "Dani",
+      "screenshot": "Images/compiled_1785104368776.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1785104368776.jpg",
+      "times": [
+        {
+          "raw": "0:12s",
+          "seconds": 12
+        },
+        {
+          "raw": "1:02min",
+          "seconds": 62
+        },
+        {
+          "raw": "0:39s",
+          "seconds": 39
+        },
+        {
+          "raw": "0:31s",
+          "seconds": 31
+        },
+        {
+          "raw": "0:59s",
+          "seconds": 59
+        },
+        {
+          "raw": "0:13s",
+          "seconds": 13
+        }
+      ]
+    },
+    "rows": [
+      {
+        "category": "Zip",
+        "thomas_raw": "0:14s",
+        "dani_raw": "0:12s",
+        "diff": "Dani won by 2s",
+        "winner": "dani"
+      },
+      {
+        "category": "Lotus",
+        "thomas_raw": "0:46s",
+        "dani_raw": "1:02min",
+        "diff": "Thomas won by 16s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Panda",
+        "thomas_raw": "0:43s",
+        "dani_raw": "0:39s",
+        "diff": "Dani won by 4s",
+        "winner": "dani"
+      },
+      {
+        "category": "Libra",
+        "thomas_raw": "0:35s",
+        "dani_raw": "0:31s",
+        "diff": "Dani won by 4s",
+        "winner": "dani"
+      },
+      {
+        "category": "Sums",
+        "thomas_raw": "1:09m",
+        "dani_raw": "0:59s",
+        "diff": "Dani won by 10s",
+        "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:10s",
+        "dani_raw": "0:13s",
+        "diff": "Thomas won by 3s",
+        "winner": "thomas"
+      }
+    ],
+    "summary": "Thomas 2 - 4 Dani"
+  },
+  "2026-07-26": {
+    "date": "2026-07-26",
+    "created_at": "2026-07-29 17:23:59",
+    "thomas": {
+      "name": "Thomas",
+      "screenshot": "Images/compiled_1785060517162.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1785060517162.jpg",
+      "times": [
+        {
+          "raw": "0:29s",
+          "seconds": 29
+        },
+        {
+          "raw": "1:19m",
+          "seconds": 79
+        },
+        {
+          "raw": "2:41m",
+          "seconds": 161
+        },
+        {
+          "raw": "1:00m",
+          "seconds": 60
+        },
+        {
+          "raw": "2:09m",
+          "seconds": 129
+        },
+        {
+          "raw": "0:41s",
+          "seconds": 41
+        }
+      ]
+    },
+    "dani": {
+      "name": "Dani",
+      "screenshot": "Images/compiled_1785079841125.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1785079841125.jpg",
+      "times": [
+        {
+          "raw": "0:30s",
+          "seconds": 30
+        },
+        {
+          "raw": "1:22min",
+          "seconds": 82
+        },
+        {
+          "raw": "2:27min",
+          "seconds": 147
+        },
+        {
+          "raw": "1:17min",
+          "seconds": 77
+        },
+        {
+          "raw": "2:21min",
+          "seconds": 141
+        },
+        {
+          "raw": "0:47s",
+          "seconds": 47
+        }
+      ]
+    },
+    "rows": [
+      {
+        "category": "Zip",
+        "thomas_raw": "0:29s",
+        "dani_raw": "0:30s",
+        "diff": "Thomas won by 1s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Lotus",
+        "thomas_raw": "1:19m",
+        "dani_raw": "1:22min",
+        "diff": "Thomas won by 3s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Panda",
+        "thomas_raw": "2:41m",
+        "dani_raw": "2:27min",
+        "diff": "Dani won by 14s",
+        "winner": "dani"
+      },
+      {
+        "category": "Libra",
+        "thomas_raw": "1:00m",
+        "dani_raw": "1:17min",
+        "diff": "Thomas won by 17s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Sums",
+        "thomas_raw": "2:09m",
+        "dani_raw": "2:21min",
+        "diff": "Thomas won by 12s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:41s",
+        "dani_raw": "0:47s",
+        "diff": "Thomas won by 6s",
+        "winner": "thomas"
+      }
+    ],
+    "summary": "Thomas 5 - 1 Dani"
+  },
+  "2026-07-25": {
+    "date": "2026-07-25",
+    "created_at": "2026-07-29 17:23:56",
+    "thomas": {
+      "name": "Thomas",
+      "screenshot": "Images/compiled_1784967547510.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1784967547510.jpg",
+      "times": [
+        {
+          "raw": "0:15s",
+          "seconds": 15
+        },
+        {
+          "raw": "0:53s",
+          "seconds": 53
+        },
+        {
+          "raw": "0:38s",
+          "seconds": 38
+        },
+        {
+          "raw": "1:08m",
+          "seconds": 68
+        },
+        {
+          "raw": "0:52s",
+          "seconds": 52
+        },
+        {
+          "raw": "0:35s",
+          "seconds": 35
+        }
+      ]
+    },
+    "dani": {
+      "name": "Dani",
+      "screenshot": "Images/compiled_1784936379973.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1784936379973.jpg",
+      "times": [
+        {
+          "raw": "0:23s",
+          "seconds": 23
+        },
+        {
+          "raw": "1:16min",
+          "seconds": 76
+        },
+        {
+          "raw": "1:01min",
+          "seconds": 61
+        },
+        {
+          "raw": "0:45s",
+          "seconds": 45
+        },
+        {
+          "raw": "1:01min",
+          "seconds": 61
+        },
+        {
+          "raw": "0:29s",
+          "seconds": 29
+        }
+      ]
+    },
+    "rows": [
+      {
+        "category": "Zip",
+        "thomas_raw": "0:15s",
+        "dani_raw": "0:23s",
+        "diff": "Thomas won by 8s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Lotus",
+        "thomas_raw": "0:53s",
+        "dani_raw": "1:16min",
+        "diff": "Thomas won by 23s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Panda",
+        "thomas_raw": "0:38s",
+        "dani_raw": "1:01min",
+        "diff": "Thomas won by 23s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Libra",
+        "thomas_raw": "1:08m",
+        "dani_raw": "0:45s",
+        "diff": "Dani won by 23s",
+        "winner": "dani"
+      },
+      {
+        "category": "Sums",
+        "thomas_raw": "0:52s",
+        "dani_raw": "1:01min",
+        "diff": "Thomas won by 9s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:35s",
+        "dani_raw": "0:29s",
+        "diff": "Dani won by 6s",
+        "winner": "dani"
+      }
+    ],
+    "summary": "Thomas 4 - 2 Dani"
+  },
+  "2026-07-24": {
+    "date": "2026-07-24",
+    "created_at": "2026-07-29 17:23:53",
+    "thomas": {
+      "name": "Thomas",
+      "screenshot": "Images/compiled_1784898505479.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1784898505479.jpg",
+      "times": [
+        {
+          "raw": "0:10s",
+          "seconds": 10
+        },
+        {
+          "raw": "0:59s",
+          "seconds": 59
+        },
+        {
+          "raw": "1:06m",
+          "seconds": 66
+        },
+        {
+          "raw": "0:31s",
+          "seconds": 31
+        },
+        {
+          "raw": "1:39m",
+          "seconds": 99
+        },
+        {
+          "raw": "0:21s",
+          "seconds": 21
+        }
+      ]
+    },
+    "dani": {
+      "name": "Dani",
+      "screenshot": "Images/compiled_1784849781072.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1784849781072.jpg",
+      "times": [
+        {
+          "raw": "0:09s",
+          "seconds": 9
+        },
+        {
+          "raw": "1:44min",
+          "seconds": 104
+        },
+        {
+          "raw": "1:03min",
+          "seconds": 63
+        },
+        {
+          "raw": "0:56s",
+          "seconds": 56
+        },
+        {
+          "raw": "1:41min",
+          "seconds": 101
+        },
+        {
+          "raw": "0:23s",
+          "seconds": 23
+        }
+      ]
+    },
+    "rows": [
+      {
+        "category": "Zip",
+        "thomas_raw": "0:10s",
+        "dani_raw": "0:09s",
+        "diff": "Dani won by 1s",
+        "winner": "dani"
+      },
+      {
+        "category": "Lotus",
+        "thomas_raw": "0:59s",
+        "dani_raw": "1:44min",
+        "diff": "Thomas won by 45s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Panda",
+        "thomas_raw": "1:06m",
+        "dani_raw": "1:03min",
+        "diff": "Dani won by 3s",
+        "winner": "dani"
+      },
+      {
+        "category": "Libra",
+        "thomas_raw": "0:31s",
+        "dani_raw": "0:56s",
+        "diff": "Thomas won by 25s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Sums",
+        "thomas_raw": "1:39m",
+        "dani_raw": "1:41min",
+        "diff": "Thomas won by 2s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:21s",
+        "dani_raw": "0:23s",
+        "diff": "Thomas won by 2s",
+        "winner": "thomas"
+      }
+    ],
+    "summary": "Thomas 4 - 2 Dani"
+  }
+};
 
-    const logsByDate = new Map(logs.map(entry => [entry.date, entry]));
-    const sortedLogs = logs.slice().sort((a, b) => b.date.localeCompare(a.date));
-    const today = new Date();
-    const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    const activeLog = logsByDate.get(todayKey) || sortedLogs[0] || null;
-    let selectedDate = activeLog ? activeLog.date : todayKey;
-    let currentMonth = activeLog ? new Date(activeLog.date) : today;
+    let selectedDate = "";
+    let calCurrentMonth = new Date();
+    let unsavedChanges = false;
 
-    function formatMonthYear(date) {
-      return date.toLocaleString('default', { month: 'long', year: 'numeric' });
+    const dates = Object.keys(database).sort((a, b) => b.localeCompare(a));
+    if (dates.length > 0) {
+      selectedDate = dates[0];
+      calCurrentMonth = new Date(selectedDate);
     }
 
-    function buildCalendar() {
-      calendar.innerHTML = '';
-      const year = currentMonth.getFullYear();
-      const month = currentMonth.getMonth();
-      const firstDay = new Date(year, month, 1);
-      const dayOfWeek = firstDay.getDay();
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-      calendarLabel.textContent = formatMonthYear(currentMonth);
-      const weekdayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-      weekdayNames.forEach(name => {
-        const label = document.createElement('div');
-        label.className = 'day empty';
-        label.textContent = name;
-        calendar.appendChild(label);
-      });
-
-      for (let i = 0; i < dayOfWeek; i += 1) {
-        const empty = document.createElement('div');
-        empty.className = 'day empty';
-        calendar.appendChild(empty);
-      }
-
-      for (let day = 1; day <= daysInMonth; day += 1) {
-        const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        const dayCell = document.createElement('div');
-        dayCell.className = 'day' + (logsByDate.has(dateKey) ? ' available' : '');
-        dayCell.dataset.date = dateKey;
-        dayCell.textContent = day;
-        if (dateKey === selectedDate) {
-          dayCell.classList.add('selected');
-        }
-        if (logsByDate.has(dateKey)) {
-          dayCell.addEventListener('click', () => selectDate(dateKey));
-        }
-        calendar.appendChild(dayCell);
-      }
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.style.display = 'block';
+      setTimeout(() => { t.style.display = 'none'; }, 3000);
     }
 
-    function renderLog(entry) {
-      if (!entry) {
-        detailCard.innerHTML = `<div><h2>No result selected</h2><p class="helper">Choose a day from the calendar or the list below.</p></div>`;
+    function parseTimeToSeconds(timeStr) {
+      const clean = String(timeStr).toLowerCase().replace(/\s+/g, '').trim();
+      let rawNum = clean;
+      if (clean.includes("min")) rawNum = clean.replace("min", "");
+      else if (clean.endsWith("m")) rawNum = clean.slice(0, -1);
+      else if (clean.endsWith("s")) rawNum = clean.slice(0, -1);
+
+      const parts = rawNum.split(":");
+      if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+        return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+      }
+      return null;
+    }
+
+    function recalculateEntry(entry) {
+      const tTimes = entry.thomas.times;
+      const dTimes = entry.dani.times;
+      const maxRows = Math.max(tTimes.length, dTimes.length, 6);
+      const cats = ["Zip", "Lotus", "Panda", "Libra", "Sums", "Hashi"];
+      
+      let tWins = 0, dWins = 0;
+      entry.rows = [];
+
+      for (let i = 0; i < maxRows; i++) {
+        const cat = cats[i] || `Cat ${i+1}`;
+        const tObj = tTimes[i] || { raw: "N/A", seconds: null };
+        const dObj = dTimes[i] || { raw: "N/A", seconds: null };
+
+        const tSec = tObj.seconds;
+        const dSec = dObj.seconds;
+        let diff = "N/A", winner = "none";
+
+        if (tSec !== null && dSec !== null) {
+          if (tSec < dSec) {
+            diff = `Thomas won by ${dSec - tSec}s`;
+            winner = "thomas";
+            tWins++;
+          } else if (dSec < tSec) {
+            diff = `Dani won by ${tSec - dSec}s`;
+            winner = "dani";
+            dWins++;
+          } else {
+            diff = "Tie";
+            winner = "tie";
+          }
+        }
+
+        entry.rows.push({
+          category: cat,
+          thomas_raw: tObj.raw,
+          dani_raw: dObj.raw,
+          diff: diff,
+          winner: winner
+        });
+      }
+      entry.summary = `Thomas ${tWins} - ${dWins} Dani`;
+    }
+
+    function renderView() {
+      const dateBadge = document.getElementById('dateBadge');
+      const tableBody = document.getElementById('tableBody');
+      const thomasImg = document.getElementById('thomasImg');
+      const daniImg = document.getElementById('daniImg');
+
+      if (!selectedDate || !database[selectedDate]) {
+        dateBadge.textContent = "No data selected";
+        tableBody.innerHTML = '<tr><td colspan="4" style="padding:20px; color:#8b949e;">No record for this date.</td></tr>';
+        thomasImg.src = "";
+        daniImg.src = "";
         return;
       }
 
-      const rows = entry.rows.map(row => {
-        const myClass = row.winner === 'my' ? 'winner' : '';
-        const sisClass = row.winner === 'sis' ? 'winner' : '';
-        return `<tr><td class="cat-cell">${row.category}</td><td class="${myClass}">${row.my_raw}</td><td class="${sisClass}">${row.sis_raw}</td><td>${row.diff}</td></tr>`;
+      const entry = database[selectedDate];
+      dateBadge.textContent = `${selectedDate} (${entry.summary || ""})`;
+
+      tableBody.innerHTML = entry.rows.map(row => {
+        const tClass = row.winner === 'thomas' ? 'winner' : (row.winner === 'dani' ? 'loser' : '');
+        const dClass = row.winner === 'dani' ? 'winner' : (row.winner === 'thomas' ? 'loser' : '');
+        return `
+          <tr>
+            <td class="cat-cell">${row.category}</td>
+            <td class="${tClass}">${row.thomas_raw}</td>
+            <td class="${dClass}">${row.dani_raw}</td>
+            <td class="margin-cell">${row.diff}</td>
+          </tr>
+        `;
       }).join('');
 
-      detailCard.innerHTML = `
-        <div class="detail-grid">
-          <div>
-            <div class="row" style="margin-bottom:14px; align-items:flex-start;">
-              <div>
-                <h2>${entry.date}</h2>
-                <p class="helper">${entry.summary}</p>
-                <p class="helper">Stored at ${entry.created_at}</p>
-              </div>
-              <div class="button-row">
-                <a class="button" href="${entry.daily_page}">Open page</a>
-                <button class="button" onclick="alert('Edit/delete can be managed by the Python watcher script or from the archive folder.')">Edit</button>
-                <button class="button" onclick="alert('Delete is not available yet in the static page. Remove the log entry from the watcher script or the JSON file.')">Delete</button>
-              </div>
-            </div>
-            <table class="detail-table">
-              <thead>
-                <tr>
-                  <th class="cat-cell">Category</th>
-                  <th>Thomas</th>
-                  <th>Dani</th>
-                  <th>Margin</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${rows}
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div class="player-block">
-              <strong>Thomas</strong>
-              <img class="thumbnail" src="${entry.player_a.thumbnail}" alt="${entry.player_a.name} thumbnail">
-              <p><a class="simple-link" href="${entry.player_a.screenshot}">Open screenshot</a></p>
-            </div>
-            <div class="player-block">
-              <strong>Dani</strong>
-              <img class="thumbnail" src="${entry.player_b.thumbnail}" alt="${entry.player_b.name} thumbnail">
-              <p><a class="simple-link" href="${entry.player_b.screenshot}">Open screenshot</a></p>
-            </div>
-          </div>
-        </div>
-      `;
+      // Fix relative paths for thumbnails if needed
+      const tThumb = entry.thomas.thumbnail.startsWith('/') ? entry.thomas.thumbnail : `../${entry.thomas.thumbnail.replace(/^Thumbnails\//, 'Thumbnails/')}`;
+      const dThumb = entry.dani.thumbnail.startsWith('/') ? entry.dani.thumbnail : `../${entry.dani.thumbnail.replace(/^Thumbnails\//, 'Thumbnails/')}`;
+
+      thomasImg.src = entry.thomas.thumbnail;
+      daniImg.src = entry.dani.thumbnail;
+      
+      // Fallback relative path check
+      thomasImg.onerror = () => { thomasImg.src = tThumb; };
+      daniImg.onerror = () => { daniImg.src = dThumb; };
     }
 
-    function buildDateList() {
-      if (!sortedLogs.length) {
-        dateList.innerHTML = '<li>No logs available yet.</li>';
-        return;
-      }
-      dateList.innerHTML = sortedLogs.map(entry =>
-        `<li><a class="simple-link" href="#" onclick="selectDate('${entry.date}')">${entry.date}</a></li>`
-      ).join('');
-    }
+    // CALENDAR ARCHIVE LOGIC
+    function renderCalendar() {
+      const calGrid = document.getElementById('calGrid');
+      const calMonthLabel = document.getElementById('calMonthLabel');
+      calGrid.innerHTML = '';
 
-    function selectDate(date) {
-      selectedDate = date;
-      const entry = logsByDate.get(date) || null;
-      renderLog(entry);
-      document.querySelectorAll('.day').forEach(day => {
-        day.classList.toggle('selected', day.dataset.date === date);
+      const y = calCurrentMonth.getFullYear();
+      const m = calCurrentMonth.getMonth();
+      calMonthLabel.textContent = calCurrentMonth.toLocaleString('default', { month: 'long', year: 'numeric' });
+
+      const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      dayNames.forEach(d => {
+        const el = document.createElement('div');
+        el.className = 'cal-day-name';
+        el.textContent = d;
+        calGrid.appendChild(el);
       });
+
+      const firstDay = new Date(y, m, 1).getDay();
+      const totalDays = new Date(y, m + 1, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'cal-cell';
+        empty.style.opacity = '0.2';
+        calGrid.appendChild(empty);
+      }
+
+      for (let d = 1; d <= totalDays; d++) {
+        const dateStr = `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const cell = document.createElement('div');
+        cell.className = 'cal-cell';
+        cell.textContent = d;
+
+        if (database[dateStr]) {
+          cell.classList.add('available');
+          if (dateStr === selectedDate) cell.classList.add('selected');
+          cell.onclick = () => {
+            selectedDate = dateStr;
+            renderView();
+            closeModals();
+          };
+        }
+        calGrid.appendChild(cell);
+      }
     }
 
-    function changeMonth(offset) {
-      currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + offset, 1);
-      buildCalendar();
+    // EDIT MODAL LOGIC
+    function openEditModal() {
+      if (!selectedDate || !database[selectedDate]) return;
+      const entry = database[selectedDate];
+      document.getElementById('editModalTitle').textContent = `✏️ Edit Results (${selectedDate})`;
+
+      const body = document.getElementById('editFormBody');
+      const cats = ["Zip", "Lotus", "Panda", "Libra", "Sums", "Hashi"];
+      
+      body.innerHTML = cats.map((cat, idx) => {
+        const tRaw = entry.thomas.times[idx] ? entry.thomas.times[idx].raw : "";
+        const dRaw = entry.dani.times[idx] ? entry.dani.times[idx].raw : "";
+        return `
+          <tr>
+            <td style="font-weight:600; font-size:13px;">${cat}</td>
+            <td><input class="edit-input" id="tTime_${idx}" value="${tRaw}" placeholder="e.g. 0:28s"></td>
+            <td><input class="edit-input" id="dTime_${idx}" value="${dRaw}" placeholder="e.g. 0:27s"></td>
+          </tr>
+        `;
+      }).join('');
+
+      document.getElementById('editModal').classList.add('active');
     }
 
-    prevMonth.addEventListener('click', () => changeMonth(-1));
-    nextMonth.addEventListener('click', () => changeMonth(1));
+    function submitEdit() {
+      if (!selectedDate || !database[selectedDate]) return;
+      const entry = database[selectedDate];
+      const cats = ["Zip", "Lotus", "Panda", "Libra", "Sums", "Hashi"];
 
-    buildDateList();
-    buildCalendar();
-    selectDate(selectedDate);
+      entry.thomas.times = [];
+      entry.dani.times = [];
+
+      cats.forEach((cat, idx) => {
+        const tVal = document.getElementById(`tTime_${idx}`).value.trim();
+        const dVal = document.getElementById(`dTime_${idx}`).value.trim();
+        entry.thomas.times.push({ raw: tVal || "N/A", seconds: parseTimeToSeconds(tVal) });
+        entry.dani.times.push({ raw: dVal || "N/A", seconds: parseTimeToSeconds(dVal) });
+      });
+
+      recalculateEntry(entry);
+      unsavedChanges = true;
+      document.getElementById('saveDbBtn').style.display = 'block';
+      renderView();
+      closeModals();
+      showToast("✅ Updated entry in memory! Click 'Save Changes' to update database.json");
+    }
+
+    function deleteCurrentEntry() {
+      if (!selectedDate || !database[selectedDate]) return;
+      if (confirm(`Are you sure you want to delete the entry for ${selectedDate}?`)) {
+        delete database[selectedDate];
+        const remaining = Object.keys(database).sort((a, b) => b.localeCompare(a));
+        selectedDate = remaining.length > 0 ? remaining[0] : "";
+        unsavedChanges = true;
+        document.getElementById('saveDbBtn').style.display = 'block';
+        renderView();
+        showToast("🗑️ Deleted entry. Click 'Save Changes' to update database.json");
+      }
+    }
+
+    async function saveDatabaseFile() {
+      const jsonText = JSON.stringify(database, null, 2);
+      
+      // Try File System Access API
+      if (window.showSaveFilePicker) {
+        try {
+          const handle = await window.showSaveFilePicker({
+            suggestedName: 'database.json',
+            types: [{ description: 'JSON Database File', accept: { 'application/json': ['.json'] } }]
+          });
+          const writable = await handle.createWritable();
+          await writable.write(jsonText);
+          await writable.close();
+          unsavedChanges = false;
+          document.getElementById('saveDbBtn').style.display = 'none';
+          showToast("💾 Saved to database.json! Watcher will push to GitHub.");
+          return;
+        } catch (err) {
+          console.log("Save picker cancelled or failed, falling back to download.");
+        }
+      }
+
+      // Fallback Blob download
+      const blob = new Blob([jsonText], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'database.json';
+      a.click();
+      URL.revokeObjectURL(url);
+
+      unsavedChanges = false;
+      document.getElementById('saveDbBtn').style.display = 'none';
+      showToast("💾 database.json downloaded! Save it to your files/ folder.");
+    }
+
+    function closeModals() {
+      document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('active'));
+    }
+
+    document.getElementById('archiveBtn').onclick = () => {
+      renderCalendar();
+      document.getElementById('calendarModal').classList.add('active');
+    };
+    document.getElementById('editBtn').onclick = openEditModal;
+    document.getElementById('deleteBtn').onclick = deleteCurrentEntry;
+    document.getElementById('submitEditBtn').onclick = submitEdit;
+    document.getElementById('saveDbBtn').onclick = saveDatabaseFile;
+
+    document.getElementById('prevMonth').onclick = () => {
+      calCurrentMonth.setMonth(calCurrentMonth.getMonth() - 1);
+      renderCalendar();
+    };
+    document.getElementById('nextMonth').onclick = () => {
+      calCurrentMonth.setMonth(calCurrentMonth.getMonth() + 1);
+      renderCalendar();
+    };
+
+    renderView();
   </script>
 </body>
 </html>
