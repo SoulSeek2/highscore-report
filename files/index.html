@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Highscore Archive</title>
+  <style>
+    body { background: #0d1117; color: #e6edf3; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .page { max-width: 980px; margin: 0 auto; padding: 18px; }
+    h1 { font-size: 28px; margin-bottom: 8px; color: #58a6ff; }
+    .intro { color: #8b949e; margin-bottom: 20px; }
+    .card { background: #161b22; border: 1px solid #21262d; border-radius: 14px; padding: 18px; margin-bottom: 18px; }
+    .grid { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
+    .grid-full { grid-column: 1 / -1; }
+    .selected { border-color: #58a6ff; }
+    .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; background: #21262d; border-radius: 10px; color: #e6edf3; text-decoration: none; }
+    a { color: #58a6ff; text-decoration: none; }
+    input[type=date] { background: #0d1117; color: #e6edf3; border: 1px solid #30363d; border-radius: 10px; padding: 10px 12px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid #30363d; text-align: left; }
+    th { background: #161b22; }
+    .cat-cell { width: 180px; }
+    .winner { color: #3fb950; font-weight: 700; }
+    .loser { color: #f85149; }
+    .thumbnail { width: 100%; max-height: 210px; object-fit: contain; border-radius: 10px; }
+    .helper { color: #8b949e; font-size: 14px; margin-top: 8px; }
+    .button-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Highscore Archive</h1>
+    <p class="intro">Latest comparison is always shown first. Pick a date to view older logs and see whether an entry exists for that day.</p>
+
+    <div class="card">
+      <div class="row">
+        <strong>Pick a date</strong>
+        <input id="datePicker" type="date" />
+      </div>
+      <p class="helper">If a log exists for the selected date, the summary will appear below.</p>
+    </div>
+
+    <div id="detailCard" class="card"></div>
+
+    <div class="card">
+      <h2>Available Dates</h2>
+      <ul id="dateList"></ul>
+    </div>
+  </div>
+
+  <script>
+    const logs = [{"date": "2026-07-24", "created_at": "2026-07-29 17:23:53", "summary": "Thomas 4 - 2 Dani", "daily_page": "2026-07-24.html", "player_a": {"name": "Thomas", "screenshot": "..\\screenshots\\compiled_1784898505479.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1784898505479.jpg", "times": [{"raw": "0:10s", "seconds": 10}, {"raw": "0:59s", "seconds": 59}, {"raw": "1:06m", "seconds": 66}, {"raw": "0:31s", "seconds": 31}, {"raw": "1:39m", "seconds": 99}, {"raw": "0:21s", "seconds": 21}]}, "player_b": {"name": "Dani", "screenshot": "..\\screenshots\\compiled_1784849781072.png", "thumbnail": "..\\thumbnails\\thumb_compiled_1784849781072.jpg", "times": [{"raw": "0:09s", "seconds": 9}, {"raw": "1:44min", "seconds": 104}, {"raw": "1:03min", "seconds": 63}, {"raw": "0:56s", "seconds": 56}, {"raw": "1:41min", "seconds": 101}, {"raw": "0:23s", "seconds": 23}]}, "rows": [{"category": "Zip", "my_raw": "0:10s", "sis_raw": "0:09s", "diff": "Dani won by 1s", "winner": "sis"}, {"category": "Lotus", "my_raw": "0:59s", "sis_raw": "1:44min", "diff": "Thomas won by 45s", "winner": "my"}, {"category": "Panda", "my_raw": "1:06m", "sis_raw": "1:03min", "diff": "Dani won by 3s", "winner": "sis"}, {"category": "Libra", "my_raw": "0:31s", "sis_raw": "0:56s", "diff": "Thomas won by 25s", "winner": "my"}, {"category": "Sums", "my_raw": "1:39m", "sis_raw": "1:41min", "diff": "Thomas won by 2s", "winner": "my"}, {"category": "Hashi", "my_raw": "0:21s", "sis_raw": "0:23s", "diff": "Thomas won by 2s", "winner": "my"}], "table_rows": "<tr><td class=\"cat-cell\">Zip</td><td class=\"\">0:10s</td><td class=\"winner\">0:09s</td><td>Dani won by 1s</td></tr>\n<tr><td class=\"cat-cell\">Lotus</td><td class=\"winner\">0:59s</td><td class=\"\">1:44min</td><td>Thomas won by 45s</td></tr>\n<tr><td class=\"cat-cell\">Panda</td><td class=\"\">1:06m</td><td class=\"winner\">1:03min</td><td>Dani won by 3s</td></tr>\n<tr><td class=\"cat-cell\">Libra</td><td class=\"winner\">0:31s</td><td class=\"\">0:56s</td><td>Thomas won by 25s</td></tr>\n<tr><td class=\"cat-cell\">Sums</td><td class=\"winner\">1:39m</td><td class=\"\">1:41min</td><td>Thomas won by 2s</td></tr>\n<tr><td class=\"cat-cell\">Hashi</td><td class=\"winner\">0:21s</td><td class=\"\">0:23s</td><td>Thomas won by 2s</td></tr>"}];
+    const detailCard = document.getElementById('detailCard');
+    const datePicker = document.getElementById('datePicker');
+    const dateList = document.getElementById('dateList');
+
+    const sortedLogs = logs.slice().sort((a, b) => b.date.localeCompare(a.date));
+    const today = new Date().toISOString().slice(0, 10);
+    const activeLog = sortedLogs.find(entry => entry.date === today) || sortedLogs[0] || null;
+
+    function createRow(label, value, className = '') {
+      return '<tr><td class="cat-cell">' + label + '</td><td class="' + className + '">' + value + '</td></tr>';
+    }
+
+    function renderLog(entry) {
+      if (!entry) {
+        detailCard.innerHTML = '<strong>No comparison found yet.</strong><p>Wait for the next screenshot pair and the watcher will build the archive automatically.</p>';
+        return;
+      }
+
+      const rows = entry.rows.map(row => {
+        const myClass = row.winner === 'my' ? 'winner' : row.winner === 'sis' ? '' : '';
+        const sisClass = row.winner === 'sis' ? 'winner' : row.winner === 'my' ? '' : '';
+        return '<tr>' +
+          '<td class="cat-cell">' + row.category + '</td>' +
+          '<td class="' + myClass + '">' + row.my_raw + '</td>' +
+          '<td class="' + sisClass + '">' + row.sis_raw + '</td>' +
+          '<td>' + row.diff + '</td>' +
+          '</tr>';
+      }).join('');
+
+      detailCard.innerHTML =
+        '<div class="row" style="margin-bottom:14px; align-items:flex-start;">' +
+          '<div>' +
+            '<h2>' + entry.date + '</h2>' +
+            '<p class="helper">' + entry.summary + '</p>' +
+            '<p class="helper">Stored at ' + entry.created_at + '</p>' +
+          '</div>' +
+          '<div class="button-row">' +
+            '<a class="button" href="' + entry.daily_page + '">Open page</a>' +
+            '<button class="button" onclick="alert('Edit/delete can be run through the Python script or manually from the archive folder.')">Edit</button>' +
+            '<button class="button" onclick="alert('Delete is not available in the static archive page yet. Use the Python watcher script to remove the date entry.')">Delete</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="grid">' +
+          '<div>' +
+            '<strong>' + entry.player_a.name + '</strong>' +
+            '<img class="thumbnail" src="' + entry.player_a.thumbnail + '" alt="' + entry.player_a.name + ' thumbnail">' +
+            '<p><a href="' + entry.player_a.screenshot + '">Open screenshot</a></p>' +
+          '</div>' +
+          '<div>' +
+            '<strong>' + entry.player_b.name + '</strong>' +
+            '<img class="thumbnail" src="' + entry.player_b.thumbnail + '" alt="' + entry.player_b.name + ' thumbnail">' +
+            '<p><a href="' + entry.player_b.screenshot + '">Open screenshot</a></p>' +
+          '</div>' +
+        '</div>' +
+        '<table>' +
+          '<thead>' +
+            '<tr>' +
+              '<th>Category</th>' +
+              '<th>' + MY_NAME + '</th>' +
+              '<th>' + SISTER_NAME + '</th>' +
+              '<th>Margin</th>' +
+            '</tr>' +
+          '</thead>' +
+          '<tbody>' +
+            rows +
+          '</tbody>' +
+        '</table>';
+    }
+
+    function buildDateList() {
+      if (!sortedLogs.length) {
+        dateList.innerHTML = '<li>No logs available yet.</li>';
+        return;
+      }
+      dateList.innerHTML = sortedLogs.map(entry =>
+        '<li><a href="#" onclick="selectDate('' + entry.date + '')">' + entry.date + '</a></li>'
+      ).join('');
+    }
+
+    function selectDate(date) {
+      const entry = sortedLogs.find(item => item.date === date);
+      if (entry) {
+        datePicker.value = date;
+        renderLog(entry);
+      } else {
+        detailCard.innerHTML = '<strong>No comparison for ' + date + '.</strong>';
+      }
+    }
+
+    datePicker.addEventListener('change', () => selectDate(datePicker.value));
+    buildDateList();
+    if (activeLog) {
+      selectDate(activeLog.date);
+    } else {
+      renderLog(null);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+{
+  "entries": [
+    {
+      "date": "2026-07-24",
+      "created_at": "2026-07-29 17:23:53",
+      "summary": "Thomas 4 - 2 Dani",
+      "daily_page": "2026-07-24.html",
+      "player_a": {
+        "name": "Thomas",
+        "screenshot": "..\\screenshots\\compiled_1784898505479.png",
+        "thumbnail": "..\\thumbnails\\thumb_compiled_1784898505479.jpg",
+        "times": [
+          {
+            "raw": "0:10s",
+            "seconds": 10
+          },
+          {
+            "raw": "0:59s",
+            "seconds": 59
+          },
+          {
+            "raw": "1:06m",
+            "seconds": 66
+          },
+          {
+            "raw": "0:31s",
+            "seconds": 31
+          },
+          {
+            "raw": "1:39m",
+            "seconds": 99
+          },
+          {
+            "raw": "0:21s",
+            "seconds": 21
+          }
+        ]
+      },
+      "player_b": {
+        "name": "Dani",
+        "screenshot": "..\\screenshots\\compiled_1784849781072.png",
+        "thumbnail": "..\\thumbnails\\thumb_compiled_1784849781072.jpg",
+        "times": [
+          {
+            "raw": "0:09s",
+            "seconds": 9
+          },
+          {
+            "raw": "1:44min",
+            "seconds": 104
+          },
+          {
+            "raw": "1:03min",
+            "seconds": 63
+          },
+          {
+            "raw": "0:56s",
+            "seconds": 56
+          },
+          {
+            "raw": "1:41min",
+            "seconds": 101
+          },
+          {
+            "raw": "0:23s",
+            "seconds": 23
+          }
+        ]
+      },
+      "rows": [
+        {
+          "category": "Zip",
+          "my_raw": "0:10s",
+          "sis_raw": "0:09s",
+          "diff": "Dani won by 1s",
+          "winner": "sis"
+        },
+        {
+          "category": "Lotus",
+          "my_raw": "0:59s",
+          "sis_raw": "1:44min",
+          "diff": "Thomas won by 45s",
+          "winner": "my"
+        },
+        {
+          "category": "Panda",
+          "my_raw": "1:06m",
+          "sis_raw": "1:03min",
+          "diff": "Dani won by 3s",
+          "winner": "sis"
+        },
+        {
+          "category": "Libra",
+          "my_raw": "0:31s",
+          "sis_raw": "0:56s",
+          "diff": "Thomas won by 25s",
+          "winner": "my"
+        },
+        {
+          "category": "Sums",
+          "my_raw": "1:39m",
+          "sis_raw": "1:41min",
+          "diff": "Thomas won by 2s",
+          "winner": "my"
+        },
+        {
+          "category": "Hashi",
+          "my_raw": "0:21s",
+          "sis_raw": "0:23s",
+          "diff": "Thomas won by 2s",
+          "winner": "my"
+        }
+      ],
+      "table_rows": "<tr><td class=\"cat-cell\">Zip</td><td class=\"\">0:10s</td><td class=\"winner\">0:09s</td><td>Dani won by 1s</td></tr>\n<tr><td class=\"cat-cell\">Lotus</td><td class=\"winner\">0:59s</td><td class=\"\">1:44min</td><td>Thomas won by 45s</td></tr>\n<tr><td class=\"cat-cell\">Panda</td><td class=\"\">1:06m</td><td class=\"winner\">1:03min</td><td>Dani won by 3s</td></tr>\n<tr><td class=\"cat-cell\">Libra</td><td class=\"winner\">0:31s</td><td class=\"\">0:56s</td><td>Thomas won by 25s</td></tr>\n<tr><td class=\"cat-cell\">Sums</td><td class=\"winner\">1:39m</td><td class=\"\">1:41min</td><td>Thomas won by 2s</td></tr>\n<tr><td class=\"cat-cell\">Hashi</td><td class=\"winner\">0:21s</td><td class=\"\">0:23s</td><td>Thomas won by 2s</td></tr>"
+    }
+  ]
+}
