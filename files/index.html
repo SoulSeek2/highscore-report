@@ -1161,13 +1161,20 @@
       const img = document.getElementById(imgId);
       const span = document.getElementById(timeSpanId);
 
-      if (img && img.src && span) {
-        const match = img.src.match(/(\d{13})/);
+      if (!img || !span) return;
+
+      function parseTime() {
+        // Read attribute directly so we get raw string even if loaded late
+        const src = img.getAttribute('src') || img.src || '';
+        
+        // Matches any 10 to 13 digit number in the filename
+        const match = src.match(/(\d{10,13})/);
 
         if (match) {
-          const timestamp = parseInt(match[1], 10);
-          const date = new Date(timestamp);
+          let timestamp = parseInt(match[1], 10);
+          if (timestamp < 100000000000) timestamp *= 1000; // convert seconds to ms if needed
 
+          const date = new Date(timestamp);
           const formattedTime = date.toLocaleString([], {
             dateStyle: 'short',
             timeStyle: 'short'
@@ -1176,6 +1183,13 @@
           span.textContent = `(${formattedTime})`;
         }
       }
+
+      // Run immediately
+      parseTime();
+
+      // Watch for changes when src gets updated later by your database/script!
+      const observer = new MutationObserver(() => parseTime());
+      observer.observe(img, { attributes: true, attributeFilter: ['src'] });
     }
 
     document.addEventListener("DOMContentLoaded", () => {
