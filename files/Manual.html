@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Screenshot Matchup</title>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 10px;
+    }
+    
+    .toolbar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      background: #238636;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* Comparison Table Styling */
+    .results-table {
+      margin: 15px auto;
+      width: 100%;
+      max-width: 1000px;
+      border-collapse: collapse;
+      background: #161b22;
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+
+    .results-table th, .results-table td {
+      padding: 8px 6px;
+      text-align: center;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .results-table th { background: #21262d; }
+    .winner { color: #3fb950; font-weight: bold; background: rgba(63, 185, 80, 0.15); }
+    .loser { color: #f85149; }
+
+    /* Strict Mobile Side-by-Side */
+    .compare-wrapper {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      gap: 6px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .player-col {
+      flex: 1;
+      min-width: 0;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 6px;
+    }
+
+    .player-col h3 {
+      font-size: 12px;
+      text-align: center;
+      margin-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #58a6ff;
+    }
+
+    .player-col img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      display: block;
+    }
+
+    #status {
+      text-align: center;
+      font-size: 13px;
+      color: #8b949e;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <label class="btn" for="fileSelect">📸 Select 2 Screenshots</label>
+    <input type="file" id="fileSelect" accept="*/*" multiple style="display:none">
+  </div>
+
+  <div id="status">Select 2 screenshots to compare...</div>
+
+  <!-- TABLE APPEARS ABOVE SCREENSHOTS -->
+  <div id="ocrResults"></div>
+  <div class="compare-wrapper" id="imageContainer"></div>
+
+  <script>
+    // EDIT NAMES HERE
+    const MY_NAME = "Thomas";
+    const SISTER_NAME = "Dani";
+
+    const fileSelect = document.getElementById('fileSelect');
+    const imageContainer = document.getElementById('imageContainer');
+    const ocrResults = document.getElementById('ocrResults');
+    const status = document.getElementById('status');
+
+    fileSelect.addEventListener('change', async (e) => {
+      const files = Array.from(e.target.files)
+        .filter(f => f.type.startsWith('image/'));
+
+      if (files.length !== 2) {
+        status.textContent = "Error: Please select exactly 2 screenshots.";
+        return;
+      }
+
+      status.textContent = "Analyzing image sizes & mapping owners...";
+
+      try {
+        // Inspect actual pixel height of the 2 images
+        const imgInfo1 = await getImageDimensions(files[0]);
+        const imgInfo2 = await getImageDimensions(files[1]);
+
+        let myFile, sisterFile, myHeight, sisterHeight;
+
+        // Sister = ~2520, Me = ~2340
+        if (imgInfo1.height > imgInfo2.height) {
+          sisterFile = files[0]; sisterHeight = imgInfo1.height;
+          myFile = files[1]; myHeight = imgInfo2.height;
+        } else if (imgInfo2.height > imgInfo1.height) {
+          sisterFile = files[1]; sisterHeight = imgInfo2.height;
+          myFile = files[0]; myHeight = imgInfo1.height;
+        } else {
+          myFile = files[0]; myHeight = imgInfo1.height;
+          sisterFile = files[1]; sisterHeight = imgInfo2.height;
+        }
+
+        // Display Screenshots side by side below
+        imageContainer.innerHTML = `
+          <div class="player-col">
+            <h3>${MY_NAME} (${myHeight}px)</h3>
+            <img id="img1" src="${URL.createObjectURL(myFile)}">
+          </div>
+          <div class="player-col">
+            <h3>${SISTER_NAME} (${sisterHeight}px)</h3>
+            <img id="img2" src="${URL.createObjectURL(sisterFile)}">
+          </div>
+        `;
+
+        status.textContent = "Cropping times & running OCR engine...";
+
+        const processedCanvasMy = await preprocessImage(myFile);
+        const processedCanvasSister = await preprocessImage(sisterFile);
+
+        const worker = await Tesseract.createWorker('eng');
+        await worker.setParameters({
+          tessedit_char_whitelist: '0123456789:smin\n ',
+        });
+
+        const resMy = await worker.recognize(processedCanvasMy);
+        const resSister = await worker.recognize(processedCanvasSister);
+        await worker.terminate();
+
+        const timesMy = parseTimeStrings(resMy.data.text);
+        const timesSister = parseTimeStrings(resSister.data.text);
+
+        if (timesMy.length === 0 && timesSister.length === 0) {
+          status.textContent = "Mapped photos! (OCR found no readable times).";
+        } else {
+          status.textContent = "Success! Comparison rendered above.";
+          renderComparisonTable(timesMy, timesSister, MY_NAME, SISTER_NAME);
+        }
+
+      } catch (err) {
+        console.error(err);
+        status.textContent = "Error during image processing or OCR execution.";
+      }
+    });
+
+    function getImageDimensions(file) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve({ width: img.width, height: img.height, file });
+        img.src = URL.createObjectURL(file);
+      });
+    }
+
+    function preprocessImage(file) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+
+          // 1. Target right-half column
+          const cropX = img.width * 0.50;
+          const cropY = img.height * 0.25;
+          const cropW = img.width * 0.48;
+          const cropH = img.height * 0.65;
+
+          // 2. DOWNSCALE TARGET: Cap max width to 350px for lightning-fast mobile WASM processing
+          const maxTargetWidth = 350;
+          const scale = maxTargetWidth / cropW;
+          
+          canvas.width = maxTargetWidth;
+          canvas.height = cropH * scale;
+
+          // Draw resized & cropped region directly (Smooth downscaling removes need for heavy threshold loops)
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = 'medium';
+          ctx.drawImage(img, cropX, cropY, cropW, cropH, 0, 0, canvas.width, canvas.height);
+
+          resolve(canvas);
+        };
+        img.src = URL.createObjectURL(file);
+      });
+    }
+
+    function parseTimeStrings(text) {
+      // Handles both English (1:39m, 0:10s) and German (1:10 min, 0:50 s)
+      const regex = /(\d+:\d{2}\s?(?:min|[sm]))/gi;
+      const rawMatches = text.match(regex) || [];
+
+      return rawMatches.map(t => {
+        const clean = t.toLowerCase().replace(/\s/g, '').trim();
+        const unit = clean.endsWith('min') ? 'min' : clean.slice(-1);
+        const timePart = clean.endsWith('min') ? clean.slice(0, -3) : clean.slice(0, -1);
+        const [mins, secs] = timePart.split(':').map(Number);
+
+        let totalSeconds = mins * 60 + secs;
+        return { raw: t.trim(), totalSeconds };
+      });
+    }
+
+    // Array mapping category rows (0 to 5) to their specific game names
+    const CATEGORY_NAMES = ["Zip", "Lotus", "Panda", "Libra", "Sums", "Hashi"];
+
+    function renderComparisonTable(tMy, tSis, p1Name, p2Name) {
+      let rows = '';
+      const maxRows = Math.max(tMy.length, tSis.length);
+
+      for (let i = 0; i < maxRows; i++) {
+        const itemMy = tMy[i] || { raw: 'N/A', totalSeconds: Infinity };
+        const itemSis = tSis[i] || { raw: 'N/A', totalSeconds: Infinity };
+
+        // Uses custom name if defined, otherwise falls back to Cat X
+        const categoryName = CATEGORY_NAMES[i] || `Cat ${i + 1}`;
+
+        let diff = '';
+        let cMy = '', cSis = '';
+
+        if (itemMy.raw === 'N/A' || itemSis.raw === 'N/A') {
+          diff = 'N/A';
+        } else if (itemMy.totalSeconds < itemSis.totalSeconds) {
+          diff = `${p1Name} won by ${(itemSis.totalSeconds - itemMy.totalSeconds)}s`;
+          cMy = 'winner';
+          cSis = 'loser';
+        } else if (itemSis.totalSeconds < itemMy.totalSeconds) {
+          diff = `${p2Name} won by ${(itemMy.totalSeconds - itemSis.totalSeconds)}s`;
+          cMy = 'loser';
+          cSis = 'winner';
+        } else {
+          diff = 'Tie';
+        }
+
+        rows += `
+        <tr>
+            <td style="font-weight:600; text-align:left; padding-left:12px;">${categoryName}</td>
+            <td class="${cMy}">${itemMy.raw}</td>
+            <td class="${cSis}">${itemSis.raw}</td>
+            <td>${diff}</td>
+        </tr>
+        `;
+      }
+
+      ocrResults.innerHTML = `
+        <table class="results-table">
+        <thead>
+            <tr>
+            <th style="text-align:left; padding-left:12px;">Category</th>
+            <th>${p1Name}</th>
+            <th>${p2Name}</th>
+            <th>Margin</th>
+            </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+        </table>
+      `;
+    }
+  </script>
+</body>
+</html>
