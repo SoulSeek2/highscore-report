@@ -1,51 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thumbnail Generator</title>
+<title>Thumbnail Creator</title>
+
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 
 <style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: sans-serif;
-    padding: 15px;
-    font-size: 18px;
+  background: #0d1117;
+  color: #e6edf3;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: 14px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.toolbar-wide {
+  grid-column: 1 / -1;
+}
+
+.btn {
+  background: #238636;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  border: 1px solid #2ea043;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #2ea043;
+}
+
+.btn-secondary {
+  background: #21262d;
+  border-color: #30363d;
+  color: #c9d1d9;
+}
+
+.btn-secondary:hover {
+  background: #30363d;
+  color: #58a6ff;
+}
+
+.card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 14px;
 }
 
 h2 {
-    font-size: 24px;
+  font-size: 16px;
+  color: #58a6ff;
+  margin-bottom: 10px;
 }
 
-input {
-    font-size: 18px;
-    width: 100%;
-}
-
-button {
-    font-size: 20px;
-    padding: 12px 20px;
-    margin: 10px 0;
-    width: 100%;
+input[type=file] {
+  display: none;
 }
 
 .thumb {
-    margin: 20px 0;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ccc;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 14px;
 }
 
 .thumb img {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    display: block;
-    margin: 10px 0;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  margin: 10px 0;
 }
 
-.thumb b {
-    word-break: break-all;
+.thumb-name {
+  font-size: 13px;
+  color: #8b949e;
+  word-break: break-all;
+}
+
+#status {
+  text-align: center;
+  font-size: 13px;
+  color: #8b949e;
+  margin: 10px 0;
 }
 </style>
 
@@ -53,11 +119,36 @@ button {
 
 <body>
 
-<h2>Thumbnail Generator</h2>
+<div class="card">
 
-<input type="file" id="files" multiple>
+  <h2>🖼️ Thumbnail Creator</h2>
 
-<button onclick="createThumbs()">Create thumbnails</button>
+  <div class="toolbar">
+
+    <label class="btn btn-secondary toolbar-wide" for="files" >
+      📂📸 Select Images
+    </label>
+
+    <input type="file" id="files" multiple>
+
+    <a href="Manual.html" class="btn btn-secondary">
+      📸 OCR Tool
+    </a>
+
+    <a href="index.html" class="btn btn-secondary">
+      📊 View Report App
+    </a>
+
+  </div>
+
+  <button class="btn" style="width:100%;" onclick="createThumbs()">
+    ✨ Create Thumbnails
+  </button>
+
+</div>
+
+
+<div id="status"></div>
 
 <div id="output"></div>
 
@@ -67,6 +158,8 @@ button {
 async function createThumbs() {
 
     const output = document.getElementById("output");
+    const status = document.getElementById("status");
+
     output.innerHTML = "";
 
     const files = document.getElementById("files").files;
@@ -76,8 +169,11 @@ async function createThumbs() {
         return;
     }
 
+
     const maxWidth = 400;
     const quality = 0.80;
+
+    let count = 0;
 
 
     for (const file of files) {
@@ -131,13 +227,18 @@ async function createThumbs() {
 
 
         div.innerHTML = `
-            <b>${filename}</b>
+            <div class="thumb-name">${filename}</div>
             <img src="${url}" loading="lazy">
-            <button>Download</button>
         `;
 
 
-        div.querySelector("button").onclick = () => {
+        const button = document.createElement("button");
+
+        button.className = "btn btn-secondary";
+        button.textContent = "📥 Download";
+
+
+        button.onclick = () => {
 
             const a = document.createElement("a");
 
@@ -149,7 +250,15 @@ async function createThumbs() {
         };
 
 
+        div.appendChild(button);
+
         output.appendChild(div);
+
+
+        count++;
+
+        status.textContent =
+            `Created ${count}/${files.length}`;
 
     }
 
