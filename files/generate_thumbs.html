@@ -2,29 +2,50 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Thumbnail Generator</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 
 <style>
 body {
     font-family: sans-serif;
-    padding: 20px;
+    padding: 15px;
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+input {
+    font-size: 18px;
+    width: 100%;
+}
+
+button {
+    font-size: 20px;
+    padding: 12px 20px;
+    margin: 10px 0;
+    width: 100%;
 }
 
 .thumb {
     margin: 20px 0;
-    border-bottom: 1px solid #ccc;
     padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
 }
 
-img {
+.thumb img {
+    width: 100%;
     max-width: 400px;
+    height: auto;
     display: block;
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
-button {
-    padding: 8px 15px;
-    font-size: 16px;
+.thumb b {
+    word-break: break-all;
 }
 </style>
 
@@ -35,8 +56,6 @@ button {
 <h2>Thumbnail Generator</h2>
 
 <input type="file" id="files" multiple>
-
-<br><br>
 
 <button onclick="createThumbs()">Create thumbnails</button>
 
@@ -57,7 +76,6 @@ async function createThumbs() {
         return;
     }
 
-
     const maxWidth = 400;
     const quality = 0.80;
 
@@ -65,7 +83,6 @@ async function createThumbs() {
     for (const file of files) {
 
         const img = await loadImage(file);
-
 
         const ratio = maxWidth / img.width;
 
@@ -109,12 +126,13 @@ async function createThumbs() {
 
 
         const div = document.createElement("div");
+
         div.className = "thumb";
 
 
         div.innerHTML = `
-            <b>${filename}</b><br>
-            <img src="${url}">
+            <b>${filename}</b>
+            <img src="${url}" loading="lazy">
             <button>Download</button>
         `;
 

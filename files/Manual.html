@@ -18,8 +18,8 @@
     }
     
     .toolbar {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);          
       gap: 10px;
       justify-content: center;
       margin-bottom: 14px;
@@ -156,6 +156,7 @@
     <label class="btn btn-secondary" for="dbSelect">📂 Load database.json</label>
     <input type="file" id="dbSelect" accept=".json" style="display:none">
 
+    <a href="generate_thumbs.html" class="btn btn-secondary">🖼️ View Thumbnail Generator</a>
     <a href="index.html" class="btn btn-secondary">📊 View Report App</a>
   </div>
 
