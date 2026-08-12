@@ -2310,7 +2310,7 @@
   },
   "2026-08-12": {
     "date": "2026-08-12",
-    "created_at": "2026-08-12 12:46:39",
+    "created_at": "2026-08-12 21:27:28",
     "thomas": {
       "name": "Thomas",
       "screenshot": "Images/compiled_1786524773890.png",
@@ -2445,7 +2445,7 @@
 
     function getRelativeUrl(pathStr) {
       if (!pathStr) return '';
-      const clean = pathStr.replace(/^[./\\]+/, '');
+      const clean = pathStr.replace(/^[./\\\\]+/, '');
       return `../${clean}`;
     }
 
@@ -2457,7 +2457,7 @@
     }
 
     function parseTimeToSeconds(timeStr) {
-      const clean = String(timeStr).toLowerCase().replace(/\s+/g, '').trim();
+      const clean = String(timeStr).toLowerCase().replace(/\\s+/g, '').trim();
       let rawNum = clean;
       if (clean.includes("min")) rawNum = clean.replace("min", "");
       else if (clean.endsWith("m")) rawNum = clean.slice(0, -1);
