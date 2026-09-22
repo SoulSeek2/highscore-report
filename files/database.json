@@ -24,6 +24,10 @@
           "seconds": 28
         },
         {
+          "raw": "1:01m",
+          "seconds": 61
+        },
+        {
           "raw": "0:30s",
           "seconds": 30
         }
