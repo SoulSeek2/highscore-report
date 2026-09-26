@@ -1,7 +1,7 @@
 {
   "2026-09-26": {
     "date": "2026-09-26",
-    "created_at": "2026-09-27 01:10:31",
+    "created_at": "2026-09-27 01:31:24",
     "thomas": {
       "name": "Thomas",
       "screenshot": "Images/compiled_1790417759734.png",
@@ -200,41 +200,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:50s",
         "dani_raw": "0:31s",
         "diff": "Dani won by 19s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:42m",
         "dani_raw": "1:07min",
         "diff": "Dani won by 35s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:46s",
         "dani_raw": "1:04min",
         "diff": "Thomas won by 18s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:33m",
         "dani_raw": "1:04min",
         "diff": "Dani won by 29s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:22s",
+        "dani_raw": "0:32s",
+        "diff": "Thomas won by 10s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 1 - 4 Dani"
+    "summary": "Thomas 2 - 4 Dani"
   },
   "2026-09-24": {
     "date": "2026-09-24",
@@ -311,41 +311,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:31s",
         "dani_raw": "0:35s",
         "diff": "Thomas won by 4s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:50m",
         "dani_raw": "1:12min",
         "diff": "Dani won by 38s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:43s",
         "dani_raw": "1:07min",
         "diff": "Thomas won by 24s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:30m",
         "dani_raw": "1:54min",
         "diff": "Thomas won by 24s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:30s",
+        "dani_raw": "1:28min",
+        "diff": "Thomas won by 58s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-09-23": {
     "date": "2026-09-23",
@@ -422,41 +422,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:51s",
         "dani_raw": "0:36s",
         "diff": "Dani won by 15s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:49s",
         "dani_raw": "0:36s",
         "diff": "Dani won by 13s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:29s",
         "dani_raw": "0:39s",
         "diff": "Thomas won by 10s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:24m",
         "dani_raw": "1:23min",
         "diff": "Dani won by 1s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:11s",
+        "dani_raw": "0:15s",
+        "diff": "Thomas won by 4s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-09-22": {
     "date": "2026-09-22",
@@ -533,41 +533,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:29s",
         "dani_raw": "0:26s",
         "diff": "Dani won by 3s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:19m",
         "dani_raw": "0:51s",
         "diff": "Dani won by 28s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:28s",
         "dani_raw": "0:48s",
         "diff": "Thomas won by 20s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:01m",
         "dani_raw": "1:00min",
         "diff": "Dani won by 1s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:30s",
+        "dani_raw": "0:26s",
+        "diff": "Dani won by 4s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 1 - 4 Dani"
+    "summary": "Thomas 1 - 5 Dani"
   },
   "2026-09-21": {
     "date": "2026-09-21",
@@ -644,41 +644,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:30s",
         "dani_raw": "0:33s",
         "diff": "Thomas won by 3s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:43s",
         "dani_raw": "0:28s",
         "diff": "Dani won by 15s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:27s",
         "dani_raw": "0:28s",
         "diff": "Thomas won by 1s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:41s",
         "dani_raw": "0:54s",
         "diff": "Thomas won by 13s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:29s",
+        "dani_raw": "0:22s",
+        "diff": "Dani won by 7s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-09-20": {
     "date": "2026-09-20",
@@ -755,41 +755,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:33s",
         "dani_raw": "0:41s",
         "diff": "Thomas won by 8s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:59s",
         "dani_raw": "2:27min",
         "diff": "Thomas won by 88s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:33s",
         "dani_raw": "1:29min",
         "diff": "Thomas won by 56s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:50m",
         "dani_raw": "2:41min",
         "diff": "Dani won by 9s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:27s",
+        "dani_raw": "0:28s",
+        "diff": "Thomas won by 1s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 4 - 1 Dani"
+    "summary": "Thomas 5 - 1 Dani"
   },
   "2026-09-19": {
     "date": "2026-09-19",
@@ -866,41 +866,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:08m",
         "dani_raw": "0:40s",
         "diff": "Dani won by 28s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:34s",
         "dani_raw": "0:33s",
         "diff": "Dani won by 1s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:37s",
         "dani_raw": "0:35s",
         "diff": "Dani won by 2s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:34s",
         "dani_raw": "0:47s",
         "diff": "Thomas won by 13s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:24s",
+        "dani_raw": "0:26s",
+        "diff": "Thomas won by 2s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-09-18": {
     "date": "2026-09-18",
@@ -977,41 +977,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:49s",
         "dani_raw": "0:39s",
         "diff": "Dani won by 10s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:22m",
         "dani_raw": "0:46s",
         "diff": "Dani won by 36s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:41s",
         "dani_raw": "1:04min",
         "diff": "Thomas won by 23s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:24m",
         "dani_raw": "1:36min",
         "diff": "Thomas won by 12s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:23s",
+        "dani_raw": "0:19s",
+        "diff": "Dani won by 4s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-09-17": {
     "date": "2026-09-17",
@@ -1088,41 +1088,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:55s",
         "dani_raw": "0:35s",
         "diff": "Dani won by 20s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:00m",
         "dani_raw": "1:11min",
         "diff": "Thomas won by 11s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:40s",
         "dani_raw": "0:50s",
         "diff": "Thomas won by 10s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:08m",
         "dani_raw": "1:27min",
         "diff": "Dani won by 41s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:34s",
+        "dani_raw": "0:35s",
+        "diff": "Thomas won by 1s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-09-16": {
     "date": "2026-09-16",
@@ -1199,41 +1199,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:28s",
         "dani_raw": "0:26s",
         "diff": "Dani won by 2s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:52s",
         "dani_raw": "1:10min",
         "diff": "Thomas won by 18s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:49s",
         "dani_raw": "0:38s",
         "diff": "Dani won by 11s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:38m",
         "dani_raw": "1:16min",
         "diff": "Dani won by 22s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:31s",
+        "dani_raw": "0:23s",
+        "diff": "Dani won by 8s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 2 - 4 Dani"
   },
   "2026-09-15": {
     "date": "2026-09-15",
@@ -1310,41 +1310,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:30s",
         "dani_raw": "0:29s",
         "diff": "Dani won by 1s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "2:27m",
         "dani_raw": "1:16min",
         "diff": "Dani won by 71s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:40s",
         "dani_raw": "0:59s",
         "diff": "Thomas won by 19s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:56s",
         "dani_raw": "0:49s",
         "diff": "Dani won by 7s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:52s",
+        "dani_raw": "0:47s",
+        "diff": "Dani won by 5s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 1 - 4 Dani"
+    "summary": "Thomas 1 - 5 Dani"
   },
   "2026-09-14": {
     "date": "2026-09-14",
@@ -1421,41 +1421,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:49s",
         "dani_raw": "0:48s",
         "diff": "Dani won by 1s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:32m",
         "dani_raw": "2:10min",
         "diff": "Thomas won by 38s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:32s",
         "dani_raw": "0:30s",
         "diff": "Dani won by 2s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:45s",
         "dani_raw": "0:54s",
         "diff": "Thomas won by 9s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:21s",
+        "dani_raw": "0:17s",
+        "diff": "Dani won by 4s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 2 - 4 Dani"
   },
   "2026-09-13": {
     "date": "2026-09-13",
@@ -1532,38 +1532,38 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:38s",
         "dani_raw": "0:51s",
         "diff": "Thomas won by 13s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:42m",
         "dani_raw": "1:13min",
         "diff": "Dani won by 29s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:24m",
         "dani_raw": "1:51min",
         "diff": "Thomas won by 27s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:39m",
         "dani_raw": "2:09min",
         "diff": "Thomas won by 30s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:42s",
+        "dani_raw": "0:42s",
+        "diff": "Tie",
+        "winner": "tie"
       }
     ],
     "summary": "Thomas 3 - 2 Dani"
@@ -1643,41 +1643,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:28s",
         "dani_raw": "0:41s",
         "diff": "Thomas won by 13s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:39s",
         "dani_raw": "0:50s",
         "diff": "Thomas won by 11s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:41s",
         "dani_raw": "1:06min",
         "diff": "Thomas won by 25s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:45s",
         "dani_raw": "1:24min",
         "diff": "Thomas won by 39s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:24s",
+        "dani_raw": "0:28s",
+        "diff": "Thomas won by 4s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 5 - 0 Dani"
+    "summary": "Thomas 6 - 0 Dani"
   },
   "2026-09-11": {
     "date": "2026-09-11",
@@ -1754,41 +1754,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:18m",
         "dani_raw": "1:02min",
         "diff": "Dani won by 16s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "2:33m",
         "dani_raw": "2:04min",
         "diff": "Dani won by 29s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:45s",
         "dani_raw": "0:45s",
         "diff": "Tie",
         "winner": "tie"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:53m",
         "dani_raw": "1:40min",
         "diff": "Dani won by 13s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:37s",
+        "dani_raw": "0:31s",
+        "diff": "Dani won by 6s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 0 - 4 Dani"
+    "summary": "Thomas 0 - 5 Dani"
   },
   "2026-09-10": {
     "date": "2026-09-10",
@@ -1865,41 +1865,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:49s",
         "dani_raw": "2:47min",
         "diff": "Thomas won by 118s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:07m",
         "dani_raw": "1:29min",
         "diff": "Thomas won by 22s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:02m",
         "dani_raw": "1:01min",
         "diff": "Dani won by 1s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:15m",
         "dani_raw": "2:34min",
         "diff": "Thomas won by 19s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:43s",
+        "dani_raw": "0:54s",
+        "diff": "Thomas won by 11s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-09-09": {
     "date": "2026-09-09",
@@ -1976,41 +1976,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:45s",
         "dani_raw": "0:58s",
         "diff": "Thomas won by 13s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "2:04m",
         "dani_raw": "1:36min",
         "diff": "Dani won by 28s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:23s",
         "dani_raw": "0:36s",
         "diff": "Thomas won by 13s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "3:05m",
         "dani_raw": "2:08min",
         "diff": "Dani won by 57s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:38s",
+        "dani_raw": "0:30s",
+        "diff": "Dani won by 8s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 2 - 4 Dani"
   },
   "2026-09-08": {
     "date": "2026-09-08",
@@ -2087,41 +2087,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:16s",
         "dani_raw": "0:28s",
         "diff": "Thomas won by 12s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:47m",
         "dani_raw": "1:01min",
         "diff": "Dani won by 46s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:31s",
         "dani_raw": "1:16min",
         "diff": "Thomas won by 45s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:20m",
         "dani_raw": "1:35min",
         "diff": "Thomas won by 15s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:39s",
+        "dani_raw": "0:42s",
+        "diff": "Thomas won by 3s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-09-07": {
     "date": "2026-09-07",
@@ -2198,41 +2198,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:40s",
         "dani_raw": "0:24s",
         "diff": "Dani won by 16s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:34s",
         "dani_raw": "0:28s",
         "diff": "Dani won by 6s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:46s",
         "dani_raw": "0:33s",
         "diff": "Dani won by 13s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:58s",
         "dani_raw": "0:55s",
         "diff": "Dani won by 3s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:32s",
+        "dani_raw": "0:14s",
+        "diff": "Dani won by 18s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 0 - 4 Dani"
+    "summary": "Thomas 0 - 5 Dani"
   },
   "2026-09-06": {
     "date": "2026-09-06",
@@ -2309,41 +2309,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:48s",
         "dani_raw": "1:51min",
         "diff": "Thomas won by 63s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:24m",
         "dani_raw": "2:29min",
         "diff": "Thomas won by 65s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:57m",
         "dani_raw": "0:58s",
         "diff": "Dani won by 59s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:35m",
         "dani_raw": "1:50min",
         "diff": "Thomas won by 15s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:39s",
+        "dani_raw": "0:42s",
+        "diff": "Thomas won by 3s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 4 - 1 Dani"
+    "summary": "Thomas 5 - 1 Dani"
   },
   "2026-09-05": {
     "date": "2026-09-05",
@@ -2420,41 +2420,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:34s",
         "dani_raw": "0:29s",
         "diff": "Dani won by 5s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:56s",
         "dani_raw": "1:05min",
         "diff": "Thomas won by 9s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:29s",
         "dani_raw": "1:25min",
         "diff": "Thomas won by 56s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:56s",
         "dani_raw": "1:00min",
         "diff": "Thomas won by 4s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:28s",
+        "dani_raw": "0:34s",
+        "diff": "Thomas won by 6s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 4 - 1 Dani"
+    "summary": "Thomas 5 - 1 Dani"
   },
   "2026-09-04": {
     "date": "2026-09-04",
@@ -2531,41 +2531,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:45s",
         "dani_raw": "0:47s",
         "diff": "Thomas won by 2s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:29m",
         "dani_raw": "1:16min",
         "diff": "Dani won by 13s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "4:09m",
         "dani_raw": "3:43min",
         "diff": "Dani won by 26s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:08m",
         "dani_raw": "1:44min",
         "diff": "Thomas won by 36s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:40s",
+        "dani_raw": "0:31s",
+        "diff": "Dani won by 9s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 2 - 4 Dani"
   },
   "2026-09-03": {
     "date": "2026-09-03",
@@ -2642,41 +2642,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:49s",
         "dani_raw": "0:44s",
         "diff": "Dani won by 5s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "2:10m",
         "dani_raw": "1:36min",
         "diff": "Dani won by 34s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:30m",
         "dani_raw": "1:40min",
         "diff": "Thomas won by 10s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:39m",
         "dani_raw": "1:55min",
         "diff": "Dani won by 44s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "1:10m",
+        "dani_raw": "0:36s",
+        "diff": "Dani won by 34s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 1 - 3 Dani"
+    "summary": "Thomas 1 - 4 Dani"
   },
   "2026-09-02": {
     "date": "2026-09-02",
@@ -2753,41 +2753,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:56s",
         "dani_raw": "1:14min",
         "diff": "Thomas won by 18s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:58s",
         "dani_raw": "0:55s",
         "diff": "Dani won by 3s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:38s",
         "dani_raw": "0:41s",
         "diff": "Thomas won by 3s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:15m",
         "dani_raw": "1:16min",
         "diff": "Thomas won by 1s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:20s",
+        "dani_raw": "0:16s",
+        "diff": "Dani won by 4s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 4 - 1 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-09-01": {
     "date": "2026-09-01",
@@ -2864,41 +2864,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:21s",
         "dani_raw": "0:26s",
         "diff": "Thomas won by 5s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:47s",
         "dani_raw": "0:44s",
         "diff": "Dani won by 3s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:36s",
         "dani_raw": "0:50s",
         "diff": "Thomas won by 14s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:58s",
         "dani_raw": "1:17min",
         "diff": "Thomas won by 19s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:44s",
+        "dani_raw": "0:38s",
+        "diff": "Dani won by 6s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 3 - 1 Dani"
+    "summary": "Thomas 3 - 2 Dani"
   },
   "2026-08-31": {
     "date": "2026-08-31",
@@ -2975,41 +2975,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:36s",
         "dani_raw": "0:28s",
         "diff": "Dani won by 8s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:25m",
         "dani_raw": "1:34min",
         "diff": "Thomas won by 9s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:28s",
         "dani_raw": "0:58s",
         "diff": "Thomas won by 30s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:54s",
         "dani_raw": "0:47s",
         "diff": "Dani won by 7s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:18s",
+        "dani_raw": "0:23s",
+        "diff": "Thomas won by 5s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-08-30": {
     "date": "2026-08-30",
@@ -3086,41 +3086,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:34s",
         "dani_raw": "0:30s",
         "diff": "Dani won by 4s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:42m",
         "dani_raw": "2:03min",
         "diff": "Thomas won by 21s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:38s",
         "dani_raw": "0:42s",
         "diff": "Thomas won by 4s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:43m",
         "dani_raw": "1:56min",
         "diff": "Thomas won by 13s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:30s",
+        "dani_raw": "0:25s",
+        "diff": "Dani won by 5s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-08-29": {
     "date": "2026-08-29",
@@ -3197,41 +3197,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:44s",
         "dani_raw": "1:05min",
         "diff": "Thomas won by 21s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:43s",
         "dani_raw": "0:57s",
         "diff": "Thomas won by 14s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:36s",
         "dani_raw": "0:57s",
         "diff": "Thomas won by 21s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:48s",
         "dani_raw": "1:13min",
         "diff": "Thomas won by 25s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:34s",
+        "dani_raw": "0:27s",
+        "diff": "Dani won by 7s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 5 - 0 Dani"
+    "summary": "Thomas 5 - 1 Dani"
   },
   "2026-08-28": {
     "date": "2026-08-28",
@@ -3308,41 +3308,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:49s",
         "dani_raw": "0:45s",
         "diff": "Dani won by 4s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:12m",
         "dani_raw": "1:12min",
         "diff": "Tie",
         "winner": "tie"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:07m",
         "dani_raw": "0:38s",
         "diff": "Dani won by 29s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:24m",
         "dani_raw": "1:21min",
         "diff": "Dani won by 3s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:23s",
+        "dani_raw": "0:21s",
+        "diff": "Dani won by 2s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 0 - 4 Dani"
+    "summary": "Thomas 0 - 5 Dani"
   },
   "2026-08-27": {
     "date": "2026-08-27",
@@ -3419,41 +3419,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:48s",
         "dani_raw": "0:32s",
         "diff": "Dani won by 16s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:52s",
         "dani_raw": "1:03min",
         "diff": "Thomas won by 11s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:15m",
         "dani_raw": "0:45s",
         "diff": "Dani won by 30s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:14m",
         "dani_raw": "1:25min",
         "diff": "Thomas won by 11s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:40s",
+        "dani_raw": "0:49s",
+        "diff": "Thomas won by 9s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-08-26": {
     "date": "2026-08-26",
@@ -3530,41 +3530,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:43s",
         "dani_raw": "0:35s",
         "diff": "Dani won by 8s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:59s",
         "dani_raw": "1:00min",
         "diff": "Thomas won by 1s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:30s",
         "dani_raw": "0:30s",
         "diff": "Tie",
         "winner": "tie"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:03m",
         "dani_raw": "1:53min",
         "diff": "Dani won by 10s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:17s",
+        "dani_raw": "0:12s",
+        "diff": "Dani won by 5s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 2 - 2 Dani"
+    "summary": "Thomas 2 - 3 Dani"
   },
   "2026-08-25": {
     "date": "2026-08-25",
@@ -3641,41 +3641,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:06m",
         "dani_raw": "0:51s",
         "diff": "Dani won by 15s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:05m",
         "dani_raw": "1:34min",
         "diff": "Thomas won by 29s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:54s",
         "dani_raw": "1:10min",
         "diff": "Thomas won by 16s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:15m",
         "dani_raw": "1:14min",
         "diff": "Dani won by 1s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:38s",
+        "dani_raw": "0:25s",
+        "diff": "Dani won by 13s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-08-24": {
     "date": "2026-08-24",
@@ -3752,41 +3752,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:54s",
         "dani_raw": "0:54s",
         "diff": "Tie",
         "winner": "tie"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:46s",
         "dani_raw": "0:29s",
         "diff": "Dani won by 17s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:32s",
         "dani_raw": "0:38s",
         "diff": "Thomas won by 6s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:35s",
         "dani_raw": "0:47s",
         "diff": "Thomas won by 12s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:18s",
+        "dani_raw": "0:19s",
+        "diff": "Thomas won by 1s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 2 - 2 Dani"
+    "summary": "Thomas 3 - 2 Dani"
   },
   "2026-08-23": {
     "date": "2026-08-23",
@@ -3863,41 +3863,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:46s",
         "dani_raw": "0:41s",
         "diff": "Dani won by 5s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:59m",
         "dani_raw": "2:59min",
         "diff": "Thomas won by 60s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:52s",
         "dani_raw": "0:58s",
         "diff": "Thomas won by 6s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:33m",
         "dani_raw": "1:54min",
         "diff": "Thomas won by 21s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:32s",
+        "dani_raw": "0:33s",
+        "diff": "Thomas won by 1s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-08-22": {
     "date": "2026-08-22",
@@ -3974,41 +3974,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:33s",
         "dani_raw": "0:33s",
         "diff": "Tie",
         "winner": "tie"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:45s",
         "dani_raw": "0:46s",
         "diff": "Thomas won by 1s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:33s",
         "dani_raw": "0:49s",
         "diff": "Thomas won by 16s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:55s",
         "dani_raw": "1:14min",
         "diff": "Thomas won by 19s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:36s",
+        "dani_raw": "0:34s",
+        "diff": "Dani won by 2s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 3 - 1 Dani"
+    "summary": "Thomas 3 - 2 Dani"
   },
   "2026-08-21": {
     "date": "2026-08-21",
@@ -4085,41 +4085,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:44s",
         "dani_raw": "0:45s",
         "diff": "Thomas won by 1s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:57s",
         "dani_raw": "0:50s",
         "diff": "Dani won by 7s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:57m",
         "dani_raw": "1:55min",
         "diff": "Dani won by 2s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:22m",
         "dani_raw": "1:32min",
         "diff": "Thomas won by 10s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:17s",
+        "dani_raw": "0:15s",
+        "diff": "Dani won by 2s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 2 - 4 Dani"
   },
   "2026-08-20": {
     "date": "2026-08-20",
@@ -4196,41 +4196,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:37s",
         "dani_raw": "0:40s",
         "diff": "Thomas won by 3s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:42s",
         "dani_raw": "1:12min",
         "diff": "Thomas won by 30s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:35s",
         "dani_raw": "1:20min",
         "diff": "Thomas won by 45s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:58m",
         "dani_raw": "2:07min",
         "diff": "Thomas won by 9s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:35s",
+        "dani_raw": "0:55s",
+        "diff": "Thomas won by 20s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 5 - 0 Dani"
+    "summary": "Thomas 6 - 0 Dani"
   },
   "2026-08-19": {
     "date": "2026-08-19",
@@ -4307,41 +4307,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "2:10m",
         "dani_raw": "3:07min",
         "diff": "Thomas won by 57s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:41s",
         "dani_raw": "0:54s",
         "diff": "Thomas won by 13s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:41s",
         "dani_raw": "0:48s",
         "diff": "Thomas won by 7s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:29m",
         "dani_raw": "2:02min",
         "diff": "Dani won by 27s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:30s",
+        "dani_raw": "0:39s",
+        "diff": "Thomas won by 9s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-08-18": {
     "date": "2026-08-18",
@@ -4418,41 +4418,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:21s",
         "dani_raw": "0:26s",
         "diff": "Thomas won by 5s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:40m",
         "dani_raw": "1:32min",
         "diff": "Dani won by 8s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:34s",
         "dani_raw": "0:54s",
         "diff": "Thomas won by 20s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:55s",
         "dani_raw": "0:56s",
         "diff": "Thomas won by 1s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:56s",
+        "dani_raw": "0:44s",
+        "diff": "Dani won by 12s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 3 - 1 Dani"
+    "summary": "Thomas 3 - 2 Dani"
   },
   "2026-08-17": {
     "date": "2026-08-17",
@@ -4529,41 +4529,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:33s",
         "dani_raw": "0:42s",
         "diff": "Thomas won by 9s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:23s",
         "dani_raw": "0:36s",
         "diff": "Thomas won by 13s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:48s",
         "dani_raw": "0:36s",
         "diff": "Dani won by 12s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:07m",
         "dani_raw": "0:45s",
         "diff": "Dani won by 22s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:15s",
+        "dani_raw": "0:21s",
+        "diff": "Thomas won by 6s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-08-16": {
     "date": "2026-08-16",
@@ -4640,41 +4640,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:06m",
         "dani_raw": "1:34min",
         "diff": "Thomas won by 28s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:22m",
         "dani_raw": "2:59min",
         "diff": "Thomas won by 97s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "4:21m",
         "dani_raw": "2:27min",
         "diff": "Dani won by 114s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:44m",
         "dani_raw": "2:01min",
         "diff": "Thomas won by 17s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:31s",
+        "dani_raw": "0:41s",
+        "diff": "Thomas won by 10s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-08-15": {
     "date": "2026-08-15",
@@ -4751,41 +4751,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:34s",
         "dani_raw": "0:27s",
         "diff": "Dani won by 7s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:38s",
         "dani_raw": "0:51s",
         "diff": "Thomas won by 13s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:37s",
         "dani_raw": "1:00min",
         "diff": "Thomas won by 23s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:07m",
         "dani_raw": "1:02min",
         "diff": "Dani won by 5s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:45s",
+        "dani_raw": "0:46s",
+        "diff": "Thomas won by 1s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-08-14": {
     "date": "2026-08-14",
@@ -4862,41 +4862,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:31s",
         "dani_raw": "0:37s",
         "diff": "Thomas won by 6s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:07m",
         "dani_raw": "1:28min",
         "diff": "Thomas won by 21s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "2:21m",
         "dani_raw": "2:58min",
         "diff": "Thomas won by 37s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "3:01m",
         "dani_raw": "3:24min",
         "diff": "Thomas won by 23s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:20s",
+        "dani_raw": "0:32s",
+        "diff": "Thomas won by 12s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 4 - 1 Dani"
+    "summary": "Thomas 5 - 1 Dani"
   },
   "2026-08-13": {
     "date": "2026-08-13",
@@ -4973,41 +4973,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:21m",
         "dani_raw": "1:14min",
         "diff": "Dani won by 7s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:39s",
         "dani_raw": "0:55s",
         "diff": "Thomas won by 16s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:59s",
         "dani_raw": "0:47s",
         "diff": "Dani won by 12s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:30m",
         "dani_raw": "2:37min",
         "diff": "Thomas won by 7s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:35s",
+        "dani_raw": "0:36s",
+        "diff": "Thomas won by 1s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-08-12": {
     "date": "2026-08-12",
@@ -5084,41 +5084,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:12m",
         "dani_raw": "2:00min",
         "diff": "Thomas won by 48s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:43s",
         "dani_raw": "1:01min",
         "diff": "Thomas won by 18s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:32s",
         "dani_raw": "0:44s",
         "diff": "Thomas won by 12s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:09m",
         "dani_raw": "1:20min",
         "diff": "Thomas won by 11s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:18s",
+        "dani_raw": "0:30s",
+        "diff": "Thomas won by 12s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 4 - 1 Dani"
+    "summary": "Thomas 5 - 1 Dani"
   },
   "2026-08-11": {
     "date": "2026-08-11",
@@ -5195,41 +5195,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:33s",
         "dani_raw": "0:29s",
         "diff": "Dani won by 4s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:21m",
         "dani_raw": "1:09min",
         "diff": "Dani won by 12s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:48s",
         "dani_raw": "0:51s",
         "diff": "Thomas won by 3s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:06m",
         "dani_raw": "0:59s",
         "diff": "Dani won by 7s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:21s",
+        "dani_raw": "0:39s",
+        "diff": "Thomas won by 18s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-08-10": {
     "date": "2026-08-10",
@@ -5306,41 +5306,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:02m",
         "dani_raw": "0:51s",
         "diff": "Dani won by 11s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:50s",
         "dani_raw": "0:37s",
         "diff": "Dani won by 13s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:27s",
         "dani_raw": "0:38s",
         "diff": "Thomas won by 11s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:47s",
         "dani_raw": "0:52s",
         "diff": "Thomas won by 5s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:22s",
+        "dani_raw": "0:35s",
+        "diff": "Thomas won by 13s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-08-09": {
     "date": "2026-08-09",
@@ -5417,41 +5417,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:20m",
         "dani_raw": "1:30min",
         "diff": "Thomas won by 10s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "3:20m",
         "dani_raw": "1:58min",
         "diff": "Dani won by 82s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:27m",
         "dani_raw": "2:51min",
         "diff": "Thomas won by 84s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:11m",
         "dani_raw": "3:09min",
         "diff": "Thomas won by 58s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:35s",
+        "dani_raw": "0:37s",
+        "diff": "Thomas won by 2s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 4 - 1 Dani"
+    "summary": "Thomas 5 - 1 Dani"
   },
   "2026-08-08": {
     "date": "2026-08-08",
@@ -5528,41 +5528,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:58s",
         "dani_raw": "0:38s",
         "diff": "Dani won by 20s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:44s",
         "dani_raw": "0:43s",
         "diff": "Dani won by 1s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:36s",
         "dani_raw": "1:02min",
         "diff": "Thomas won by 26s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:17m",
         "dani_raw": "1:05min",
         "diff": "Dani won by 12s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:23s",
+        "dani_raw": "0:29s",
+        "diff": "Thomas won by 6s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 1 - 4 Dani"
+    "summary": "Thomas 2 - 4 Dani"
   },
   "2026-08-07": {
     "date": "2026-08-07",
@@ -5639,38 +5639,38 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:47s",
         "dani_raw": "0:35s",
         "diff": "Dani won by 12s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:18m",
         "dani_raw": "0:53s",
         "diff": "Dani won by 25s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:05m",
         "dani_raw": "1:36min",
         "diff": "Thomas won by 31s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:08m",
         "dani_raw": "1:49min",
         "diff": "Dani won by 19s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:17s",
+        "dani_raw": "0:17s",
+        "diff": "Tie",
+        "winner": "tie"
       }
     ],
     "summary": "Thomas 1 - 4 Dani"
@@ -5750,41 +5750,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:38s",
         "dani_raw": "0:34s",
         "diff": "Dani won by 4s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:06m",
         "dani_raw": "3:02min",
         "diff": "Thomas won by 116s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:34s",
         "dani_raw": "0:54s",
         "diff": "Thomas won by 20s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "3:09m",
         "dani_raw": "3:49min",
         "diff": "Thomas won by 40s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:38s",
+        "dani_raw": "0:36s",
+        "diff": "Dani won by 2s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 3 - 1 Dani"
+    "summary": "Thomas 3 - 2 Dani"
   },
   "2026-08-05": {
     "date": "2026-08-05",
@@ -5861,41 +5861,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:35m",
         "dani_raw": "1:03min",
         "diff": "Dani won by 32s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:55s",
         "dani_raw": "0:40s",
         "diff": "Dani won by 15s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:31s",
         "dani_raw": "0:37s",
         "diff": "Thomas won by 6s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:11m",
         "dani_raw": "1:36min",
         "diff": "Dani won by 35s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:31s",
+        "dani_raw": "0:34s",
+        "diff": "Thomas won by 3s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-08-04": {
     "date": "2026-08-04",
@@ -5972,41 +5972,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:37s",
         "dani_raw": "0:27s",
         "diff": "Dani won by 10s",
         "winner": "dani"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:45s",
         "dani_raw": "1:16min",
         "diff": "Thomas won by 31s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:52s",
         "dani_raw": "1:31min",
         "diff": "Thomas won by 39s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:51s",
         "dani_raw": "1:05min",
         "diff": "Thomas won by 14s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:30s",
+        "dani_raw": "0:48s",
+        "diff": "Thomas won by 18s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-08-03": {
     "date": "2026-08-03",
@@ -6083,41 +6083,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:52s",
         "dani_raw": "1:03min",
         "diff": "Thomas won by 11s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:37s",
         "dani_raw": "0:40s",
         "diff": "Thomas won by 3s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:28s",
         "dani_raw": "0:34s",
         "diff": "Thomas won by 6s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:35s",
         "dani_raw": "0:27s",
         "diff": "Dani won by 8s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:31s",
+        "dani_raw": "0:18s",
+        "diff": "Dani won by 13s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-08-02": {
     "date": "2026-08-02",
@@ -6194,41 +6194,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:10m",
         "dani_raw": "1:28min",
         "diff": "Thomas won by 18s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:50m",
         "dani_raw": "2:40min",
         "diff": "Thomas won by 50s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:43s",
         "dani_raw": "0:40s",
         "diff": "Dani won by 3s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:35m",
         "dani_raw": "1:58min",
         "diff": "Thomas won by 23s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:41s",
+        "dani_raw": "0:48s",
+        "diff": "Thomas won by 7s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-08-01": {
     "date": "2026-08-01",
@@ -6305,41 +6305,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:30s",
         "dani_raw": "0:36s",
         "diff": "Thomas won by 6s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:35s",
         "dani_raw": "0:44s",
         "diff": "Thomas won by 9s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:30s",
         "dani_raw": "0:43s",
         "diff": "Thomas won by 13s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:54s",
         "dani_raw": "1:02min",
         "diff": "Thomas won by 8s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:34s",
+        "dani_raw": "0:28s",
+        "diff": "Dani won by 6s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 5 - 0 Dani"
+    "summary": "Thomas 5 - 1 Dani"
   },
   "2026-07-31": {
     "date": "2026-07-31",
@@ -6416,41 +6416,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:36s",
         "dani_raw": "0:43s",
         "diff": "Thomas won by 7s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:52s",
         "dani_raw": "0:37s",
         "diff": "Dani won by 15s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:51s",
         "dani_raw": "2:05min",
         "diff": "Thomas won by 74s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:12m",
         "dani_raw": "1:29min",
         "diff": "Thomas won by 17s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:26s",
+        "dani_raw": "0:21s",
+        "diff": "Dani won by 5s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 4 - 1 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-07-30": {
     "date": "2026-07-30",
@@ -6527,41 +6527,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:30m",
         "dani_raw": "1:39min",
         "diff": "Thomas won by 9s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "2:01m",
         "dani_raw": "1:07min",
         "diff": "Dani won by 54s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:35s",
         "dani_raw": "0:39s",
         "diff": "Thomas won by 4s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:56m",
         "dani_raw": "2:55min",
         "diff": "Dani won by 1s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:49s",
+        "dani_raw": "0:36s",
+        "diff": "Dani won by 13s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 2 - 3 Dani"
+    "summary": "Thomas 2 - 4 Dani"
   },
   "2026-07-29": {
     "date": "2026-07-29",
@@ -6638,41 +6638,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:41s",
         "dani_raw": "1:10min",
         "diff": "Thomas won by 29s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:34s",
         "dani_raw": "1:13min",
         "diff": "Thomas won by 39s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:28s",
         "dani_raw": "0:40s",
         "diff": "Thomas won by 12s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:41m",
         "dani_raw": "2:05min",
         "diff": "Dani won by 36s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:38s",
+        "dani_raw": "0:31s",
+        "diff": "Dani won by 7s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 3 - 3 Dani"
   },
   "2026-07-28": {
     "date": "2026-07-28",
@@ -6749,41 +6749,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:21s",
         "dani_raw": "0:33s",
         "diff": "Thomas won by 12s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:31m",
         "dani_raw": "1:02min",
         "diff": "Dani won by 29s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:32s",
         "dani_raw": "0:50s",
         "diff": "Thomas won by 18s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:52s",
         "dani_raw": "1:17min",
         "diff": "Thomas won by 25s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:26s",
+        "dani_raw": "0:55s",
+        "diff": "Thomas won by 29s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 4 - 1 Dani"
+    "summary": "Thomas 5 - 1 Dani"
   },
   "2026-07-27": {
     "date": "2026-07-27",
@@ -6860,41 +6860,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:46s",
         "dani_raw": "1:02min",
         "diff": "Thomas won by 16s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:43s",
         "dani_raw": "0:39s",
         "diff": "Dani won by 4s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:35s",
         "dani_raw": "0:31s",
         "diff": "Dani won by 4s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:09m",
         "dani_raw": "0:59s",
         "diff": "Dani won by 10s",
         "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:10s",
+        "dani_raw": "0:13s",
+        "diff": "Thomas won by 3s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 1 - 4 Dani"
+    "summary": "Thomas 2 - 4 Dani"
   },
   "2026-07-26": {
     "date": "2026-07-26",
@@ -6971,41 +6971,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "1:19m",
         "dani_raw": "1:22min",
         "diff": "Thomas won by 3s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "2:41m",
         "dani_raw": "2:27min",
         "diff": "Dani won by 14s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:00m",
         "dani_raw": "1:17min",
         "diff": "Thomas won by 17s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:09m",
         "dani_raw": "2:21min",
         "diff": "Thomas won by 12s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:41s",
+        "dani_raw": "0:47s",
+        "diff": "Thomas won by 6s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 4 - 1 Dani"
+    "summary": "Thomas 5 - 1 Dani"
   },
   "2026-07-25": {
     "date": "2026-07-25",
@@ -7082,41 +7082,41 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:53s",
         "dani_raw": "1:16min",
         "diff": "Thomas won by 23s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:38s",
         "dani_raw": "1:01min",
         "diff": "Thomas won by 23s",
         "winner": "thomas"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:08m",
         "dani_raw": "0:45s",
         "diff": "Dani won by 23s",
         "winner": "dani"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "0:52s",
         "dani_raw": "1:01min",
         "diff": "Thomas won by 9s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:35s",
+        "dani_raw": "0:29s",
+        "diff": "Dani won by 6s",
+        "winner": "dani"
       }
     ],
-    "summary": "Thomas 4 - 1 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   },
   "2026-07-24": {
     "date": "2026-07-24",
@@ -7193,40 +7193,40 @@
       },
       {
         "category": "Lotus",
-        "thomas_raw": "N/A",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
-      },
-      {
-        "category": "Panda",
         "thomas_raw": "0:59s",
         "dani_raw": "1:44min",
         "diff": "Thomas won by 45s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "1:06m",
         "dani_raw": "1:03min",
         "diff": "Dani won by 3s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:31s",
         "dani_raw": "0:56s",
         "diff": "Thomas won by 25s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:39m",
         "dani_raw": "1:41min",
         "diff": "Thomas won by 2s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:21s",
+        "dani_raw": "0:23s",
+        "diff": "Thomas won by 2s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 3 - 2 Dani"
+    "summary": "Thomas 4 - 2 Dani"
   }
 }

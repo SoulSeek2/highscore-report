@@ -180,7 +180,19 @@
   <script>
     const MY_NAME = "Thomas";
     const SISTER_NAME = "Dani";
-    const CATEGORY_NAMES = ["Zip", "Lotus", "Panda", "Libra", "Sums", "Hashi"];
+    const CATEGORY_NAMES = ["Zip", "Gems", "Lotus", "Panda", "Libra", "Sums", "Hashi"];
+    const LEGACY_CATEGORY_NAMES = ["Zip", "Lotus", "Panda", "Libra", "Sums", "Hashi"];
+
+    function getCategoryNamesForDate(dateKey) {
+      if (dateKey && dateKey < "2026-09-26") {
+        return LEGACY_CATEGORY_NAMES;
+      }
+      return CATEGORY_NAMES;
+    }
+
+    function getTimeForSlot(slotIndex, timesList, dateKey) {
+      return timesList[slotIndex] || { raw: "N/A", seconds: Infinity };
+    }
 
     let loadedDb = {};
     let currentSessionData = null;
@@ -285,17 +297,8 @@
         const processedCanvasMy = await preprocessImage(myFile);
         const processedCanvasSister = await preprocessImage(sisterFile);
 
-        const worker = await Tesseract.createWorker('eng');
-        await worker.setParameters({
-          tessedit_char_whitelist: '0123456789:smin\n ',
-        });
-
-        const resMy = await worker.recognize(processedCanvasMy);
-        const resSister = await worker.recognize(processedCanvasSister);
-        await worker.terminate();
-
-        const timesMy = parseTimeStrings(resMy.data.text);
-        const timesSister = parseTimeStrings(resSister.data.text);
+        const timesMy = await ocrRowTimesFromCanvas(processedCanvasMy);
+        const timesSister = await ocrRowTimesFromCanvas(processedCanvasSister);
 
         status.textContent = "Success! Comparison calculated below.";
         renderComparisonTable(timesMy, timesSister, MY_NAME, SISTER_NAME);
@@ -411,18 +414,19 @@
     function recalculateEntry(entry) {
       const tTimes = entry.thomas.times;
       const dTimes = entry.dani.times;
-      const maxRows = Math.max(tTimes.length, dTimes.length, 6);
+      const categoryNames = getCategoryNamesForDate(entry.date);
+      const maxRows = Math.max(tTimes.length, dTimes.length, categoryNames.length);
       let tWins = 0, dWins = 0;
       entry.rows = [];
 
       for (let i = 0; i < maxRows; i++) {
-        const cat = CATEGORY_NAMES[i] || `Cat ${i+1}`;
-        const tObj = tTimes[i] || { raw: "N/A", seconds: null };
-        const dObj = dTimes[i] || { raw: "N/A", seconds: null };
+        const cat = categoryNames[i] || `Cat ${i+1}`;
+        const tObj = getTimeForSlot(i, tTimes, entry.date);
+        const dObj = getTimeForSlot(i, dTimes, entry.date);
 
         let diff = "N/A", winner = "none";
 
-        if (tObj.seconds !== null && dObj.seconds !== null) {
+        if (tObj.seconds !== Infinity && dObj.seconds !== Infinity) {
           if (tObj.seconds < dObj.seconds) {
             diff = `Thomas won by ${dObj.seconds - tObj.seconds}s`;
             winner = "thomas";
@@ -462,48 +466,96 @@
         img.onload = () => {
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
-          const cropX = img.width * 0.50;
-          const cropY = img.height * 0.25;
-          const cropW = img.width * 0.48;
-          const cropH = img.height * 0.65;
-          const maxTargetWidth = 350;
+          const cropX = img.width * 0.47;
+          const cropY = img.height * 0.16;
+          const cropW = img.width * 0.51;
+          const cropH = img.height * 0.77;
+          const maxTargetWidth = 420;
           const scale = maxTargetWidth / cropW;
-          
+
           canvas.width = maxTargetWidth;
           canvas.height = cropH * scale;
           ctx.imageSmoothingEnabled = true;
           ctx.imageSmoothingQuality = 'medium';
           ctx.drawImage(img, cropX, cropY, cropW, cropH, 0, 0, canvas.width, canvas.height);
-          resolve(canvas);
+
+          const gray = document.createElement('canvas');
+          gray.width = canvas.width;
+          gray.height = canvas.height;
+          const gctx = gray.getContext('2d');
+          gctx.drawImage(canvas, 0, 0);
+          const imageData = gctx.getImageData(0, 0, gray.width, gray.height);
+          const data = imageData.data;
+          for (let i = 0; i < data.length; i += 4) {
+            const luminance = (data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114);
+            const bin = luminance > 180 ? 255 : 0;
+            data[i] = bin; data[i + 1] = bin; data[i + 2] = bin;
+          }
+          gctx.putImageData(imageData, 0, 0);
+          resolve(gray);
         };
         img.src = URL.createObjectURL(file);
       });
     }
 
-    function parseTimeStrings(text) {
-      const regex = /(\d+:\d{2}\s?(?:min|[sm]))/gi;
-      const rawMatches = text.match(regex) || [];
-
-      return rawMatches.map(t => {
-        const clean = t.toLowerCase().replace(/\s/g, '').trim();
+    function parseTimeTokensFromText(text) {
+      const values = [];
+      const matches = [...(text || '').matchAll(/(\d+\s*:\s*\d{1,2}\s*(?:s|min|m)?|\d+\s*s)/gi)];
+      for (const match of matches) {
+        const clean = match[0].toLowerCase().replace(/\s+/g, '').trim();
         let rawNum = clean;
         if (clean.endsWith('min')) rawNum = clean.slice(0, -3);
         else if (clean.endsWith('m') || clean.endsWith('s')) rawNum = clean.slice(0, -1);
 
         const parts = rawNum.split(':').map(Number);
-        const seconds = parts.length === 2 ? parts[0] * 60 + parts[1] : null;
-        return { raw: t.trim(), seconds };
+        const seconds = parts.length === 2 ? parts[0] * 60 + parts[1] : (Number(rawNum) || null);
+        if (seconds !== null) values.push({ raw: match[0].trim(), seconds });
+      }
+      return values;
+    }
+
+    async function ocrRowTimesFromCanvas(canvas) {
+      const worker = await Tesseract.createWorker('eng');
+      await worker.setParameters({
+        tessedit_char_whitelist: '0123456789:smin\n ',
       });
+
+      const wholeRes = await worker.recognize(canvas);
+      const wholeValues = parseTimeTokensFromText(wholeRes.data.text);
+      if (wholeValues.length >= 7) {
+        await worker.terminate();
+        return wholeValues.slice(0, 7);
+      }
+
+      const values = [];
+      const rowCount = 7;
+      for (let i = 0; i < rowCount; i++) {
+        const y0 = Math.floor((canvas.height / rowCount) * i);
+        const y1 = Math.floor((canvas.height / rowCount) * (i + 1));
+        const rowCanvas = document.createElement('canvas');
+        rowCanvas.width = canvas.width;
+        rowCanvas.height = Math.max(1, y1 - y0);
+        const ctx = rowCanvas.getContext('2d');
+        ctx.drawImage(canvas, 0, y0, canvas.width, rowCanvas.height, 0, 0, rowCanvas.width, rowCanvas.height);
+
+        const res = await worker.recognize(rowCanvas);
+        const rowValues = parseTimeTokensFromText(res.data.text);
+        if (rowValues.length) values.push(rowValues[rowValues.length - 1]);
+      }
+
+      await worker.terminate();
+      return values.slice(0, 7);
     }
 
     function renderComparisonTable(tMy, tSis, p1Name, p2Name) {
       let rows = '';
-      const maxRows = Math.max(tMy.length, tSis.length);
+      const categoryNames = getCategoryNamesForDate(matchDateInput.value || todayStr);
+      const maxRows = Math.max(tMy.length, tSis.length, categoryNames.length);
 
       for (let i = 0; i < maxRows; i++) {
         const itemMy = tMy[i] || { raw: 'N/A', seconds: Infinity };
         const itemSis = tSis[i] || { raw: 'N/A', seconds: Infinity };
-        const categoryName = CATEGORY_NAMES[i] || `Cat ${i + 1}`;
+        const categoryName = categoryNames[i] || `Cat ${i + 1}`;
 
         let diff = '', cMy = '', cSis = '';
 
@@ -514,7 +566,7 @@
           cMy = 'winner';
           cSis = 'loser';
         } else if (itemSis.seconds < itemMy.seconds) {
-          diff = `${p2Name} won by ${(itemMy.seconds - itemMy.seconds)}s`;
+          diff = `${p2Name} won by ${(itemMy.seconds - itemSis.seconds)}s`;
           cMy = 'loser';
           cSis = 'winner';
         } else {
