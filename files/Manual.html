@@ -500,47 +500,84 @@
 
     function parseTimeTokensFromText(text) {
       const values = [];
-      const matches = [...(text || '').matchAll(/(\d+\s*:\s*\d{1,2}\s*(?:s|min|m)?|\d+\s*s)/gi)];
-      for (const match of matches) {
-        const clean = match[0].toLowerCase().replace(/\s+/g, '').trim();
-        let rawNum = clean;
-        if (clean.endsWith('min')) rawNum = clean.slice(0, -3);
-        else if (clean.endsWith('m') || clean.endsWith('s')) rawNum = clean.slice(0, -1);
+      const normalized = (text || '').replace(/\r/g, ' ').replace(/\s+/g, ' ');
+      const matches = [...normalized.matchAll(/(\d+\s*:\s*\d{1,2}\s*(?:s|min|m)?)/gi)];
 
-        const parts = rawNum.split(':').map(Number);
-        const seconds = parts.length === 2 ? parts[0] * 60 + parts[1] : (Number(rawNum) || null);
-        if (seconds !== null) values.push({ raw: match[0].trim(), seconds });
+      for (const match of matches) {
+        const raw = match[1].trim();
+        const clean = raw.replace(/\s+/g, '').toLowerCase();
+        const m = clean.match(/^(\d+):(\d{1,2})(s|min|m)?$/);
+        if (!m) continue;
+
+        const minutes = Number(m[1]);
+        const seconds = Number(m[2]);
+        const totalSeconds = minutes * 60 + seconds;
+
+        if (Number.isFinite(totalSeconds) && totalSeconds >= 1 && totalSeconds <= 3600) {
+          values.push({ raw: raw, seconds: totalSeconds });
+        }
       }
+
       return values;
+    }
+
+    function pickBestTimeToken(tokens) {
+      if (!tokens || !tokens.length) return null;
+
+      const valid = tokens.filter(v => v.seconds > 0 && v.seconds <= 3600);
+      if (!valid.length) return null;
+
+      const nonTiny = valid.filter(v => v.seconds >= 10);
+      if (nonTiny.length) {
+        return nonTiny.reduce((best, cur) => cur.seconds > best.seconds ? cur : best, nonTiny[0]);
+      }
+
+      return valid.reduce((best, cur) => cur.seconds > best.seconds ? cur : best, valid[0]);
     }
 
     async function ocrRowTimesFromCanvas(canvas) {
       const worker = await Tesseract.createWorker('eng');
       await worker.setParameters({
-        tessedit_char_whitelist: '0123456789:smin\n ',
+        tessedit_char_whitelist: '0123456789:sminSMIN\n ',
+        tessedit_pageseg_mode: '7',
+        preserve_interword_spaces: '1'
       });
 
-      const wholeRes = await worker.recognize(canvas);
-      const wholeValues = parseTimeTokensFromText(wholeRes.data.text);
-      if (wholeValues.length >= 7) {
-        await worker.terminate();
-        return wholeValues.slice(0, 7);
-      }
-
-      const values = [];
       const rowCount = 7;
+      const values = [];
+
       for (let i = 0; i < rowCount; i++) {
         const y0 = Math.floor((canvas.height / rowCount) * i);
         const y1 = Math.floor((canvas.height / rowCount) * (i + 1));
+        const rowTop = Math.max(0, y0 + 8);
+        const rowBottom = Math.max(rowTop + 12, y1 - 8);
+
         const rowCanvas = document.createElement('canvas');
-        rowCanvas.width = canvas.width;
-        rowCanvas.height = Math.max(1, y1 - y0);
+        rowCanvas.width = Math.max(60, Math.floor(canvas.width * 0.7));
+        rowCanvas.height = Math.max(1, rowBottom - rowTop);
+
         const ctx = rowCanvas.getContext('2d');
-        ctx.drawImage(canvas, 0, y0, canvas.width, rowCanvas.height, 0, 0, rowCanvas.width, rowCanvas.height);
+        ctx.clearRect(0, 0, rowCanvas.width, rowCanvas.height);
+        ctx.filter = 'grayscale(1) contrast(180%) brightness(120%)';
+        ctx.drawImage(
+          canvas,
+          Math.floor(canvas.width * 0.12),
+          rowTop,
+          Math.floor(canvas.width * 0.72),
+          Math.max(1, rowBottom - rowTop),
+          0,
+          0,
+          rowCanvas.width,
+          rowCanvas.height
+        );
+        ctx.filter = 'none';
 
         const res = await worker.recognize(rowCanvas);
         const rowValues = parseTimeTokensFromText(res.data.text);
-        if (rowValues.length) values.push(rowValues[rowValues.length - 1]);
+        const selected = pickBestTimeToken(rowValues);
+        if (selected) {
+          values.push(selected);
+        }
       }
 
       await worker.terminate();
