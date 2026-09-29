@@ -466,13 +466,13 @@
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
 
-          const cropX = img.width * 0.50;
-          const cropY = img.height * 0.25;
-          const cropW = img.width * 0.48;
-          const cropH = img.height * 0.68;
+          const cropX = img.width * 0.48;
+          const cropY = img.height * 0.22;
+          const cropW = img.width * 0.50;
+          const cropH = img.height * 0.72;
 
-          // 2x upscale for character definition
-          const scale = 2;
+          // 3x upscale gives anti-aliased curves room to stay distinct
+          const scale = 3;
           canvas.width = cropW * scale;
           canvas.height = cropH * scale;
 
@@ -483,15 +483,13 @@
           const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
           const data = imageData.data;
 
-          // High contrast grayscale conversion (preserves curve anti-aliasing)
+          // Smooth contrast stretch to keep font shapes natural for 5 vs 6 distinction
           for (let i = 0; i < data.length; i += 4) {
             const r = data[i], g = data[i + 1], b = data[i + 2];
-            
-            // Luminance formula
             let v = 0.2126 * r + 0.7152 * g + 0.0722 * b;
 
-            // Boost contrast around text threshold without sharp binary clipping
-            v = (v - 100) * 2.2;
+            // Soft contrast boost without destroying inner curves
+            v = (v - 110) * 1.5;
             v = Math.max(0, Math.min(255, v));
 
             data[i] = v;     // R
@@ -508,23 +506,27 @@
 
     // 3. Updated Parser for tight formats like "0:18s"
     function parseTimeStrings(text) {
-      // Regex matches both "0:18s" and "0:14 s"
-      const regex = /(\d+:\d{2}\s*(?:min|[sm])?)/gi;
+      const regex = /(\d+:\d{1,2}\s*(?:min|[sm])?)/gi;
       const rawMatches = text.match(regex) || [];
 
       return rawMatches.map(t => {
         const clean = t.toLowerCase().replace(/\s/g, '').trim();
-        let rawNum = clean;
-        if (clean.endsWith('min')) rawNum = clean.slice(0, -3);
-        else if (clean.endsWith('m') || clean.endsWith('s')) rawNum = clean.slice(0, -1);
+        let rawNum = clean.replace(/(min|m|s)$/i, '');
 
         const parts = rawNum.split(':').map(Number);
-        const seconds = (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1]))
-          ? parts[0] * 60 + parts[1]
-          : null;
+        let seconds = null;
 
-        return { raw: t.trim(), seconds };
-      });
+        if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+          const mins = parts[0];
+          const secs = parts[1];
+
+          if (secs < 60) {
+            seconds = mins * 60 + secs;
+          }
+        }
+
+        return { raw: rawNum + (clean.endsWith('min') ? 'min' : (clean.endsWith('m') ? 'm' : 's')), seconds };
+      }).filter(item => item.seconds !== null);
     }
 
     function renderComparisonTable(tMy, tSis, p1Name, p2Name) {
