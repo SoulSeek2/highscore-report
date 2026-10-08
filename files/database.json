@@ -1,4 +1,130 @@
 {
+  "2026-10-08": {
+    "date": "2026-10-08",
+    "created_at": "2026-10-08 12:46:41",
+    "thomas": {
+      "name": "Thomas",
+      "screenshot": "Images/compiled_1791429249470.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1791429249470.jpg",
+      "times": [
+        {
+          "raw": "0:37s",
+          "seconds": 37
+        },
+        {
+          "raw": "0:43s",
+          "seconds": 43
+        },
+        {
+          "raw": "0:37s",
+          "seconds": 37
+        },
+        {
+          "raw": "0:57s",
+          "seconds": 57
+        },
+        {
+          "raw": "0:30s",
+          "seconds": 30
+        },
+        {
+          "raw": "2:14m",
+          "seconds": 134
+        },
+        {
+          "raw": "0:52s",
+          "seconds": 52
+        }
+      ]
+    },
+    "dani": {
+      "name": "Dani",
+      "screenshot": "Images/compiled_1791455580622.png",
+      "thumbnail": "Thumbnails/thumb_compiled_1791455580622.jpg",
+      "times": [
+        {
+          "raw": "1:49min",
+          "seconds": 109
+        },
+        {
+          "raw": "2:24min",
+          "seconds": 144
+        },
+        {
+          "raw": "0:34s",
+          "seconds": 34
+        },
+        {
+          "raw": "0:45s",
+          "seconds": 45
+        },
+        {
+          "raw": "0:48s",
+          "seconds": 48
+        },
+        {
+          "raw": "1:35min",
+          "seconds": 95
+        },
+        {
+          "raw": "0:43s",
+          "seconds": 43
+        }
+      ]
+    },
+    "rows": [
+      {
+        "category": "Zip",
+        "thomas_raw": "0:37s",
+        "dani_raw": "1:49min",
+        "diff": "Thomas won by 72s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Gems",
+        "thomas_raw": "0:43s",
+        "dani_raw": "2:24min",
+        "diff": "Thomas won by 101s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Lotus",
+        "thomas_raw": "0:37s",
+        "dani_raw": "0:34s",
+        "diff": "Dani won by 3s",
+        "winner": "dani"
+      },
+      {
+        "category": "Panda",
+        "thomas_raw": "0:57s",
+        "dani_raw": "0:45s",
+        "diff": "Dani won by 12s",
+        "winner": "dani"
+      },
+      {
+        "category": "Libra",
+        "thomas_raw": "0:30s",
+        "dani_raw": "0:48s",
+        "diff": "Thomas won by 18s",
+        "winner": "thomas"
+      },
+      {
+        "category": "Sums",
+        "thomas_raw": "2:14m",
+        "dani_raw": "1:35min",
+        "diff": "Dani won by 39s",
+        "winner": "dani"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:52s",
+        "dani_raw": "0:43s",
+        "diff": "Dani won by 9s",
+        "winner": "dani"
+      }
+    ],
+    "summary": "Thomas 3 - 4 Dani"
+  },
   "2026-10-07": {
     "date": "2026-10-07",
     "created_at": "2026-10-07 12:46:40",
