@@ -280,26 +280,75 @@
             <p style="font-size:11px; color:#8b949e;">Thumbnail generated</p>
           </div>
         `;
-
-        status.textContent = "Cropping times & running OCR engine...";
+        // START TEXT
+        status.textContent = "Running line-order sequential OCR...";
 
         const processedCanvasMy = await preprocessImage(myFile);
         const processedCanvasSister = await preprocessImage(sisterFile);
 
         const worker = await Tesseract.createWorker('eng');
         await worker.setParameters({
-          tessedit_char_whitelist: '0123456789:smin\n ',
+          tessedit_char_whitelist: '0123456789:smin ',
+          tessedit_pageseg_mode: '6'
         });
 
-        const resMy = await worker.recognize(processedCanvasMy);
-        const resSister = await worker.recognize(processedCanvasSister);
-        await worker.terminate();
+        async function processCanvasSpatial(canvas, worker) {
+          const res = await worker.recognize(canvas);
+          const rawText = res.data.text || '';
+          
+          // Split recognized text into lines and clean them up
+          const lines = rawText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+          const detectedTimes = [];
 
-        const timesMy = parseTimeStrings(resMy.data.text);
-        const timesSister = parseTimeStrings(resSister.data.text);
+          lines.forEach(lineText => {
+            const match = lineText.match(/(\d+:\d{1,2}\s*(?:min|[sm])?)/i);
+            if (match) {
+              const clean = match[1].toLowerCase().replace(/\s/g, '');
+              let rawNum = clean.replace(/(min|m|s)$/i, '');
+              const parts = rawNum.split(':').map(Number);
+
+              if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+                const seconds = parts[0] * 60 + parts[1];
+                if (parts[1] < 60) {
+                  const formattedRaw = rawNum + (clean.endsWith('min') ? 'min' : (clean.endsWith('m') ? 'm' : 's'));
+                  // Prevent duplicate entries if a line registers twice
+                  if (!detectedTimes.some(dt => dt.raw === formattedRaw && dt.seconds === seconds)) {
+                    detectedTimes.push({ raw: formattedRaw, seconds });
+                  }
+                }
+              }
+            }
+          });
+
+          const rowCount = 7;
+          const slots = Array(rowCount).fill(null).map(() => ({ raw: "N/A", seconds: null }));
+
+          if (detectedTimes.length === 7) {
+            for (let i = 0; i < 7; i++) {
+              slots[i] = { raw: detectedTimes[i].raw, seconds: detectedTimes[i].seconds };
+            }
+          } else if (detectedTimes.length > 0) {
+            // If 6 items are found, the top row (Zip) is missing -> start at index 1
+            let startSlot = (detectedTimes.length === 6) ? 1 : 0;
+
+            detectedTimes.forEach((dt, idx) => {
+              const targetSlot = startSlot + idx;
+              if (targetSlot >= 0 && targetSlot < rowCount) {
+                slots[targetSlot] = { raw: dt.raw, seconds: dt.seconds };
+              }
+            });
+          }
+
+          return slots;
+        }
+
+        const timesMy = await processCanvasSpatial(processedCanvasMy, worker);
+        const timesSister = await processCanvasSpatial(processedCanvasSister, worker);
+        await worker.terminate();
 
         status.textContent = "Success! Comparison calculated below.";
         renderComparisonTable(timesMy, timesSister, MY_NAME, SISTER_NAME);
+        //END TEXT
 
         // Prepare session object for merging
         currentSessionData = {
@@ -466,12 +515,11 @@
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
 
-          const cropX = img.width * 0.48;
-          const cropY = img.height * 0.22;
-          const cropW = img.width * 0.50;
-          const cropH = img.height * 0.72;
+          const cropX = img.width * 0.47;
+          const cropY = img.height * 0.14;
+          const cropW = img.width * 0.51;
+          const cropH = img.height * 0.82;
 
-          // 3x upscale gives anti-aliased curves room to stay distinct
           const scale = 3;
           canvas.width = cropW * scale;
           canvas.height = cropH * scale;
@@ -480,28 +528,38 @@
           ctx.imageSmoothingQuality = 'high';
           ctx.drawImage(img, cropX, cropY, cropW, cropH, 0, 0, canvas.width, canvas.height);
 
-          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-          const data = imageData.data;
-
-          // Smooth contrast stretch to keep font shapes natural for 5 vs 6 distinction
-          for (let i = 0; i < data.length; i += 4) {
-            const r = data[i], g = data[i + 1], b = data[i + 2];
-            let v = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-
-            // Soft contrast boost without destroying inner curves
-            v = (v - 110) * 1.5;
-            v = Math.max(0, Math.min(255, v));
-
-            data[i] = v;     // R
-            data[i + 1] = v; // G
-            data[i + 2] = v; // B
+          // Thresholding: convert pixels to crisp black and white for Tesseract
+          const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const data = imgData.data;
+          for (let j = 0; j < data.length; j += 4) {
+            const v = 0.2126 * data[j] + 0.7152 * data[j+1] + 0.0722 * data[j+2];
+            const b = v > 170 ? 255 : 0;
+            data[j] = data[j+1] = data[j+2] = b;
           }
-          ctx.putImageData(imageData, 0, 0);
+          ctx.putImageData(imgData, 0, 0);
 
           resolve(canvas);
         };
         img.src = URL.createObjectURL(file);
       });
+    }
+
+    function parseSingleRowTime(text) {
+      const regex = /(\d+:\d{1,2}\s*(?:min|[sm])?)/gi;
+      const matches = text.match(regex);
+      if (!matches || matches.length === 0) return null;
+
+      const clean = matches[matches.length - 1].toLowerCase().replace(/\s/g, '').trim();
+      let rawNum = clean.replace(/(min|m|s)$/i, '');
+      const parts = rawNum.split(':').map(Number);
+      
+      if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+        const seconds = parts[0] * 60 + parts[1];
+        if (parts[1] < 60) {
+          return { raw: rawNum + (clean.endsWith('min') ? 'min' : (clean.endsWith('m') ? 'm' : 's')), seconds };
+        }
+      }
+      return null;
     }
 
     // 3. Updated Parser for tight formats like "0:18s"
