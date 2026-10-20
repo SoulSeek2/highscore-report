@@ -312,9 +312,8 @@
                 if (parts[1] < 60) {
                   const formattedRaw = rawNum + (clean.endsWith('min') ? 'min' : (clean.endsWith('m') ? 'm' : 's'));
                   // Prevent duplicate entries if a line registers twice
-                  if (!detectedTimes.some(dt => dt.raw === formattedRaw && dt.seconds === seconds)) {
-                    detectedTimes.push({ raw: formattedRaw, seconds });
-                  }
+                  // if (!detectedTimes.some(dt => dt.raw === formattedRaw && dt.seconds === seconds)) {
+                  detectedTimes.push({ raw: formattedRaw, seconds });                  
                 }
               }
             }
