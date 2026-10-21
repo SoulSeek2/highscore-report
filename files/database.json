@@ -10406,6 +10406,10 @@
         {
           "raw": "2:09m",
           "seconds": 129
+        },
+        {
+          "raw": "0:33s",
+          "seconds": 33
         }
       ]
     },
@@ -10437,6 +10441,10 @@
         {
           "raw": "2:20min",
           "seconds": 140
+        },
+        {
+          "raw": "0:49s",
+          "seconds": 49
         }
       ]
     },
@@ -10449,42 +10457,49 @@
         "winner": "thomas"
       },
       {
-        "category": "Lotus",
+        "category": "Gems",
         "thomas_raw": "0:22s",
         "dani_raw": "0:27s",
         "diff": "Thomas won by 5s",
         "winner": "thomas"
       },
       {
-        "category": "Panda",
+        "category": "Lotus",
         "thomas_raw": "0:49s",
         "dani_raw": "0:50s",
         "diff": "Thomas won by 1s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "3:08m",
         "dani_raw": "2:26min",
         "diff": "Dani won by 42s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "0:46s",
         "dani_raw": "1:10min",
         "diff": "Thomas won by 24s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "2:09m",
         "dani_raw": "2:20min",
         "diff": "Thomas won by 11s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:33s",
+        "dani_raw": "0:49s",
+        "diff": "Thomas won by 16s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 5 - 1 Dani"
+    "summary": "Thomas 6 - 1 Dani"
   },
   "2024-11-01": {
     "date": "2024-11-01",
@@ -10517,6 +10532,10 @@
         {
           "raw": "1:49m",
           "seconds": 109
+        },
+        {
+          "raw": "0:51s",
+          "seconds": 51
         }
       ]
     },
@@ -10548,6 +10567,10 @@
         {
           "raw": "2:30min",
           "seconds": 150
+        },
+        {
+          "raw": "1:23min",
+          "seconds": 83
         }
       ]
     },
@@ -10560,41 +10583,48 @@
         "winner": "dani"
       },
       {
-        "category": "Lotus",
+        "category": "Gems",
         "thomas_raw": "0:26s",
         "dani_raw": "0:49s",
         "diff": "Thomas won by 23s",
         "winner": "thomas"
       },
       {
-        "category": "Panda",
+        "category": "Lotus",
         "thomas_raw": "0:57s",
         "dani_raw": "1:06min",
         "diff": "Thomas won by 9s",
         "winner": "thomas"
       },
       {
-        "category": "Libra",
+        "category": "Panda",
         "thomas_raw": "0:25s",
         "dani_raw": "0:18s",
         "diff": "Dani won by 7s",
         "winner": "dani"
       },
       {
-        "category": "Sums",
+        "category": "Libra",
         "thomas_raw": "1:12m",
         "dani_raw": "4:07min",
         "diff": "Thomas won by 175s",
         "winner": "thomas"
       },
       {
-        "category": "Hashi",
+        "category": "Sums",
         "thomas_raw": "1:49m",
         "dani_raw": "2:30min",
         "diff": "Thomas won by 41s",
         "winner": "thomas"
+      },
+      {
+        "category": "Hashi",
+        "thomas_raw": "0:51s",
+        "dani_raw": "1:23min",
+        "diff": "Thomas won by 32s",
+        "winner": "thomas"
       }
     ],
-    "summary": "Thomas 4 - 2 Dani"
+    "summary": "Thomas 5 - 2 Dani"
   }
 }
