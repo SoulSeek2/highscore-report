@@ -43,8 +43,8 @@
       "thumbnail": "Thumbnails/thumb_compiled_1793229074825_dani.jpg",
       "times": [
         {
-          "raw": "N/A",
-          "seconds": null
+          "raw": "0:11s",
+          "seconds": 11
         },
         {
           "raw": "0:43s",
@@ -76,9 +76,9 @@
       {
         "category": "Zip",
         "thomas_raw": "0:04s",
-        "dani_raw": "N/A",
-        "diff": "N/A",
-        "winner": "none"
+        "dani_raw": "0:11s",
+        "diff": "0:07s",
+        "winner": "thomas"
       },
       {
         "category": "Gems",
@@ -123,7 +123,7 @@
         "winner": "dani"
       }
     ],
-    "summary": "Thomas 4 - 2 Dani"
+    "summary": "Thomas 5 - 2 Dani"
   },
   "2026-10-28": {
     "date": "2026-10-28",
